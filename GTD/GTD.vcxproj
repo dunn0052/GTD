@@ -15,9 +15,11 @@
     <ClInclude Include="src\GTD\App.h" />
     <ClInclude Include="src\GTD\Core.h" />
     <ClInclude Include="src\GTD\EntryPoint.h" />
+    <ClInclude Include="src\GTD\Logger.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\GTD\App.cpp" />
+    <ClCompile Include="src\GTD\Logger.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -73,6 +75,12 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y "$(OutDir)GTD.dll" "$(SolutionDir)bin\$(Configuration)\$(Platform)\Sandbox\"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Copy dll to executable</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -89,6 +97,12 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y "$(OutDir)GTD.dll" "$(SolutionDir)bin\$(Configuration)\$(Platform)\Sandbox\"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Copy dll to executable</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

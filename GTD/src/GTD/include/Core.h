@@ -9,3 +9,7 @@
 #else
 	#error Implement other OS please
 #endif
+
+// Bits
+#define MAKE_BIT( BIT_NUM ) ( 1 << BIT_NUM )
+#define SET_BIT( FLAGS, BIT_NUM ) ( FLAGS |= MAKE_BIT( BIT_NUM) )

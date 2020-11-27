@@ -5,8 +5,9 @@
 #include <stdio.h>
 
 // GTD headers
-#include "GTD/App.h"
-#include "GTD/Core.h"
+#include "GTD/include/App.h"
+#include "GTD/include/Core.h"
+#include "GTD/include/Logger.h"
 
 // ENTRY POINT
-#include "GTD/EntryPoint.h"
+#include "GTD/include/EntryPoint.h"
