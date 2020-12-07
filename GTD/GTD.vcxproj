@@ -11,15 +11,67 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GTD\include\ControllerProp.h" />
+    <ClInclude Include="src\GTD\include\Controllers.h" />
+    <ClInclude Include="src\GTD\include\LayerStack.h" />
     <ClInclude Include="src\GTD.h" />
-    <ClInclude Include="src\GTD\App.h" />
-    <ClInclude Include="src\GTD\Core.h" />
-    <ClInclude Include="src\GTD\EntryPoint.h" />
-    <ClInclude Include="src\GTD\Logger.h" />
+    <ClInclude Include="src\GTD\Events\AppEvent.h" />
+    <ClInclude Include="src\GTD\Events\Events.h" />
+    <ClInclude Include="src\GTD\Events\JoypadEvent.h" />
+    <ClInclude Include="src\GTD\Events\KeyEvent.h" />
+    <ClInclude Include="src\GTD\Events\MouseEvent.h" />
+    <ClInclude Include="src\GTD\include\App.h" />
+    <ClInclude Include="src\GTD\include\Core.h" />
+    <ClInclude Include="src\GTD\include\EntryPoint.h" />
+    <ClInclude Include="src\GTD\include\Layer.h" />
+    <ClInclude Include="src\GTD\include\WindowsWindow.h" />
+    <ClInclude Include="src\GTD\include\Window.h" />
+    <ClInclude Include="src\GTD\include\Logger.h" />
+    <ClInclude Include="src\GTD\Util\JoypadCodes.h" />
+    <ClInclude Include="src\GTD\Util\KeyCodes.h" />
+    <ClInclude Include="src\GTD\Util\MouseCodes.h" />
+    <ClInclude Include="src\GTD\Util\Utils.h" />
+    <ClInclude Include="src\PCH.h" />
+    <ClInclude Include="src\TPP\GLFW\glfw3.h" />
+    <ClInclude Include="src\TPP\GLFW\glfw3native.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\GTD\App.cpp" />
-    <ClCompile Include="src\GTD\Logger.cpp" />
+    <ClCompile Include="src\GTD\Controllers.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\LayerStack.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\App.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Layer.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Logger.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Window.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\WindowsWindow.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\PCH.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeaderFile>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\TPP\GLFW\glfw3.dll" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -70,10 +122,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GTD_PLATFORM_WINDOWS;GTD_BUILD_DLL;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>PCH.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)Vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)Vendor\GLFW\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;User32.lib;gdi32.lib;shell32.lib;opengl32.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /y "$(OutDir)GTD.dll" "$(SolutionDir)bin\$(Configuration)\$(Platform)\Sandbox\"</Command>
@@ -90,12 +147,17 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GTD_PLATFORM_WINDOWS;GTD_BUILD_DLL;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>PCH.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)Vendor\GFLW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)Vendor\GFLW\lib;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /y "$(OutDir)GTD.dll" "$(SolutionDir)bin\$(Configuration)\$(Platform)\Sandbox\"</Command>

@@ -1,12 +1,14 @@
 #pragma once
+#include "../PCH.h"
+
 #include "include/Logger.h"
 
 namespace GTD
 {
-    const WORD Logger::COLOR_BLUE = 10;
-    const WORD Logger::COLOR_GREEN = 11;
-    const WORD Logger::COLOR_YELLOW = 14;
-    const WORD Logger::COLOR_RED = 12;
+    const WORD Logger::COLOR_BLUE(10);
+    const WORD Logger::COLOR_GREEN(11);
+    const WORD Logger::COLOR_YELLOW(14);
+    const WORD Logger::COLOR_RED(12);
 
     HANDLE const Logger::console = GetStdHandle(STD_OUTPUT_HANDLE);
 
@@ -16,7 +18,7 @@ namespace GTD
         return instance;
     }
 
-    void Logger::Log(LogLevel level, const char* format, ...)
+    void Logger::Log(LogLevel level, const char* debugLevel, const char* fileName, int lineNum, const char* format, ...)
     {
         const std::lock_guard<std::mutex> lock(mMutex);
 
@@ -57,6 +59,7 @@ namespace GTD
             }
         }
 
+        printf_s("[%s][%s : %i] ", debugLevel, fileName, lineNum);
         char* sMessage = NULL;
         int nLength = 0;
         va_list args;

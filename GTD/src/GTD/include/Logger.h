@@ -1,28 +1,23 @@
 #pragma once
-#include <iostream>
-#include <cstdarg>
-#include <mutex>
-#ifdef GTD_PLATFORM_WINDOWS
-    #include <Windows.h>
-#else
-    #include <stdlib.h> // Linux or Mac? 
-#endif
+#include "..\..\PCH.h"
 
 #include "Core.h"
 
-#define DEBUG_MODE 1
-
-#if DEBUG_MODE
-    #define LOG_GENERAL( MESSAGE, LEVEL ) GTD::Logger::Instance().Log(LEVEL, "[%s:%d] %s", __FILE__, __LINE__, MESSAGE )
+#if GTD_DEBUG_MODE
+#define LOG_TEMPLATE( MESSAGE, LEVEL,  ... ) GTD::Logger::Instance().Log(GTD::LogLevel::LEVEL, #LEVEL , __FILE__, __LINE__, MESSAGE, __VA_ARGS__ )
 #else
-    #define LOG_GENERAL
+    #define LOG_TEMPLATE( MESSAGE, LEVEL, TYPE, ... )
 #endif
-    
-#define LOG_DEBUG( MESSAGE ) LOG_GENERAL( MESSAGE, GTD::LogLevel::DEBUG ) 	
-#define LOG_INFO( MESSAGE ) LOG_GENERAL( MESSAGE, GTD::LogLevel::INFO ) 	
-#define LOG_WARN( MESSAGE ) LOG_GENERAL( MESSAGE, GTD::LogLevel::WARN ) 	
-#define LOG_FATAL( MESSAGE ) LOG_GENERAL( MESSAGE, GTD::LogLevel::FATAL ) 	
+       
 
+#define LOG_DEBUG( MESSAGE, ... ) LOG_TEMPLATE( MESSAGE, DEBUG, __VA_ARGS__ ) 	
+#define LOG_INFO( MESSAGE, ... ) LOG_TEMPLATE( MESSAGE, INFO, __VA_ARGS__ ) 	
+#define LOG_WARN( MESSAGE, ... ) LOG_TEMPLATE( MESSAGE, WARN, __VA_ARGS__ ) 	
+#define LOG_FATAL( MESSAGE, ... ) LOG_TEMPLATE( MESSAGE, FATAL, __VA_ARGS__ )
+
+#if GTD_ENABLE_ASSERTS
+    #define GTD_ASSERT( PREDICATE, ... ) { if(!( PREDICATE )) { LOG_FATAL("Assertion Failed: %s", __VA_ARGS__); __debugbreak(); }}
+#endif
 
 namespace GTD
 {
@@ -40,7 +35,7 @@ namespace GTD
     public:
         static Logger& Instance(void);
 
-        void Log(LogLevel level, const char* format, ...);
+        void Log(LogLevel level, const char* debugLevel, const char* fileName, int lineNum, const char* format, ...);
 
     private:
         Logger() {}

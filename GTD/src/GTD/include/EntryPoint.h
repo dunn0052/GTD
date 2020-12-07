@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Logger.h"
 
 #ifdef GTD_PLATFORM_WINDOWS
