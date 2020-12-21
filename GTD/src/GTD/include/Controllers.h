@@ -1,12 +1,10 @@
 #pragma once
-#include "../Events/JoypadEvent.h"
 #include "Logger.h"
 #include "Core.h"
 #include "ControllerProp.h"
 
 namespace GTD
 {
-
 	static const char MAX_NUM_CONTROLLERS = 16; //GLFW_JOYSTICK_LAST + 1;
 
 	class GTD_API Controllers
@@ -18,6 +16,8 @@ namespace GTD
 
 		void OnUpdate();
 		void SetCallBacks();
+		const std::vector<XboxController>& GetXboxControllers() const { return m_ControllerProps; };
+		const XboxController& GetXboxController(size_t ID) const { GTD_ASSERT(ID < MAX_NUM_CONTROLLERS && ID > 0, "Controller index out of range!"); return m_ControllerProps[ID]; }
 
 		// all callbacks must be mirrored in the GLFWCallbackWrapper class
 		// and then set in SetCallbacks()
@@ -26,7 +26,6 @@ namespace GTD
 	private:
 		void Init();
 		std::vector<XboxController> m_ControllerProps;
-		static uint32_t controllerIDs;
 
 		/* Creates reference to Controllers class so its members can be used */
 		class GLFWCallbackWrapper

@@ -1,4 +1,5 @@
 #pragma once
+#include "ControllerCodes.h"
 
 namespace GTD
 {
@@ -18,6 +19,7 @@ namespace GTD
 		/* info */
 		int m_numAxis;
 		float m_axis[A];
+		/* distance from axis center to consider not moved */
 		float m_axisCenteringEpsilon[A];
 
 		int m_numButtons;
@@ -37,15 +39,5 @@ namespace GTD
 	const static float axisOffsetEpsilon = 5 * pow(10, -5);
 
 	/* controller implementation */
-	const static char* XboxButtonMappings[16] =
-	{
-		"X", "B", "A", "Y",
-		"LB", "RB",
-		"LT", "RT", 
-		"BACK", "START", 
-		"LSB", "RSB", 
-		"UP", "RIGHT", "DOWN", "LEFT"
-	};
-
-	using XboxController = ControllerProps <6, 14>;
+	using XboxController = ControllerProps<4, 16>;
 }

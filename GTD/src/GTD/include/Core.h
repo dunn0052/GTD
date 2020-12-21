@@ -15,6 +15,6 @@
 #define GTD_ENABLE_ASSERTS 1
 
 // Bits
-#define MAKE_BIT( BIT_NUM ) ( 1 << BIT_NUM )
+#define MAKE_BIT( BIT_NUM ) ( 1ull << BIT_NUM )
 #define SET_BIT( FLAGS, BIT_NUM ) ( FLAGS |= MAKE_BIT( BIT_NUM) )
 #define UNSET_BIT( FLAGS, BIT_NUM ) ( FLAGS &= ~MAKE_BIT( BIT_NUM ) )

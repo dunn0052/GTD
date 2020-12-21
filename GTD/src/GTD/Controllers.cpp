@@ -11,33 +11,32 @@ namespace GTD
 
 	Controllers::~Controllers()
 	{
-		m_ControllerProps.clear(); // sus on what happens if the space is reserved, but not initiated
+		m_ControllerProps.clear();
 	}
 
 	static void debugXboxController(XboxController& controller)
 	{
-		bool end = false;
 		std::stringstream ss;
 
-		for (size_t i = 0; i < controller.m_numButtons; i++)
+		// one of the few times I want to use non class enums
+		for(ContextCode button : XboxCode)
 		{
-			if (controller.m_buttons[i])
+			if (controller.m_buttons[button])
 			{
-				end = true;
-				ss << XboxButtonMappings[i] << " ";
+				ss << XboxButtonMappings[button] << " ";
 			}
 		}
 
-		for (size_t i = 0; i < controller.m_numAxis; i++)
+		for(ContextAxis axis : XboxAxis)
 		{
-			if (controller.m_axis[i] < -controller.m_axisCenteringEpsilon[i] || controller.m_axis[i] > controller.m_axisCenteringEpsilon[i])
+			if (controller.m_axis[axis] < -controller.m_axisCenteringEpsilon[axis] || controller.m_axis[axis] > controller.m_axisCenteringEpsilon[axis])
 			{
-				end = true;
-				ss << controller.m_axis[i] << " ";
+				ss << XboxAxisMappings[axis] << ": ";
+				ss << controller.m_axis[axis] << " ";
 			}
 		}
 
-		if (end)
+		if (ss.rdbuf()->in_avail())
 		{
 			LOG_INFO("%s", ss.str().c_str());
 		}
@@ -50,9 +49,13 @@ namespace GTD
 		{
 			if (controller.connected)
 			{
-#define IF_NULL(a,b) ((a) == NULL ? (b) : (a))
-				memcpy(controller.m_buttons, IF_NULL(glfwGetJoystickButtons(controller.ID, &controller.m_numButtons), controller.m_buttons), controller.m_numButtons * sizeof(char));
-				memcpy(controller.m_axis, IF_NULL(glfwGetJoystickAxes(controller.ID, &controller.m_numAxis), controller.m_axis), controller.m_numAxis * sizeof(float));
+#define IF_NULL(a,b) ((a) == NULL ? (b) : (a)) // avoid crash if glfwGetJoysticButtons returns NULL
+				memcpy(controller.m_buttons, 
+					IF_NULL(glfwGetJoystickButtons(controller.ID, &controller.m_numButtons), controller.m_buttons), 
+					controller.m_numButtons * sizeof(char));
+				memcpy(controller.m_axis, 
+					IF_NULL(glfwGetJoystickAxes(controller.ID, &controller.m_numAxis), controller.m_axis), 
+					controller.m_numAxis * sizeof(float));
 #undef IFNULL
 
 #if GTD_DEBUG_MODE
@@ -109,7 +112,7 @@ namespace GTD
 				// can add user pointer for this if other callback stuff is done
 				//glfwSetJoystickUserPointer(cont.ID, &cont);
 
-				LOG_DEBUG("Controller %d connected!", cont.ID);
+				LOG_INFO("Controller %d connected!", cont.ID);
 			}
 			else
 			{
@@ -121,8 +124,9 @@ namespace GTD
 		{
 			if (&cont != nullptr)
 			{
-				cont.connected = false;
-				LOG_DEBUG("Controller %d disconnected!", cont.ID);
+				LOG_INFO("Controller %d disconnected!", cont.ID);
+				//glfwSetJoystickUserPointer(cont.ID, nullptr);
+				memset(&cont, 0, sizeof(cont));
 			}
 			else
 			{
@@ -130,8 +134,6 @@ namespace GTD
 			}
 		}
 	}
-
-	uint32_t Controllers::controllerIDs = 0;
 
 	/* set controller instance to null ilnitially */
 	Controllers* Controllers::GLFWCallbackWrapper::s_Controllers = nullptr;
