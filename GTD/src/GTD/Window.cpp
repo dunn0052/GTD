@@ -1,4 +1,5 @@
-#include "../PCH.h"
+#include "PCH/PCH.h"
+
 
 #include "include/Window.h"
 #include "include/Core.h"
@@ -11,7 +12,7 @@
 
 namespace GTD
 {
-	Scope<Window> Window::Create(const WindowProps& props)
+	Scope<IWindow> IWindow::Create(const WindowProps& props)
 	{
 #ifdef GTD_PLATFORM_WINDOWS
 		return CreateScope<WindowsWindow>(props);

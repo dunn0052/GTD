@@ -6,6 +6,7 @@ namespace GTD
 	/* Set numbers since they will map with array indices and I want to be careful */
 	enum ContextCode : size_t
 	{
+		NONE = -1,
 		X = 0,
 		B = 1,
 		A = 2,

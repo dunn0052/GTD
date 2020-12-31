@@ -18,5 +18,24 @@
     <ClCompile Include="src\Sandbox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Layer2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\images\Checkerboard.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\ChernoLogo.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\mario.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="inlucde\Layer2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

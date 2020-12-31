@@ -21,6 +21,19 @@ namespace GTD
 		"RX", "RY"
 	};
 
+	const static char* SNESButtonMappings[16] =
+	{
+		"X", "B", "A", "Y",
+		"LB", "RB",
+		"L??", "R??",
+		"BACK", "START"
+	};
+
+	const static char* SNESAxisMappings[4]
+	{
+		"DX", "DY",
+	};
+
 	/* array index matches with button index */
 	const static ContextCode XboxCode[16] =
 	{
@@ -47,6 +60,26 @@ namespace GTD
 		ContextAxis::LX,
 		ContextAxis::LY,
 		ContextAxis::RX,
-		ContextAxis::RY
+		ContextAxis::RY,
+	};
+
+	const static ContextCode SNESButtons[10]
+	{
+		ContextCode::X,
+		ContextCode::B,
+		ContextCode::A,
+		ContextCode::Y,
+		ContextCode::LB,
+		ContextCode::RB,
+		ContextCode::NONE, // not sure what the nones map to..?
+		ContextCode::NONE,
+		ContextCode::BACK,
+		ContextCode::START
+	};
+
+	const static ContextAxis SNESAxis[2] =
+	{
+		ContextAxis::LX,
+		ContextAxis::RX
 	};
 }

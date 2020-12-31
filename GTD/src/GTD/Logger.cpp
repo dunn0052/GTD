@@ -1,5 +1,6 @@
 #pragma once
-#include "../PCH.h"
+#include "PCH/PCH.h"
+
 
 #include "include/Logger.h"
 
@@ -20,7 +21,7 @@ namespace GTD
 
     void Logger::Log(LogLevel level, const char* debugLevel, const char* fileName, int lineNum, const char* format, ...)
     {
-        const std::lock_guard<std::mutex> lock(mMutex);
+        //const std::lock_guard<std::mutex> lock(mMutex);
 
         if (level != mLogLevel)
         {

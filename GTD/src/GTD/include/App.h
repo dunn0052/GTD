@@ -7,9 +7,18 @@
 #include "../Events/AppEvent.h"
 #include "LayerStack.h"
 #include "../include/Controllers.h"
+#include "../Renderer/IShader.h"
+#include "../Renderer/IIndexBuffer.h"
+#include "../Renderer/IVertexBuffer.h"
+#include "../Renderer/IVertexArray.h"
+#include "../Renderer/RenderCommands.h"
+#include "../Renderer/Renderer.h"
+#include "../Renderer/OrthographicCamera.h"
+#include "../include/Timestep.h"
 
 namespace GTD
 {
+
 	class GTD_API App
 	{
 	public:
@@ -25,14 +34,17 @@ namespace GTD
 		void PushOverlay(Layer* layer);
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
+		bool OnWindowResize(WindowResizeEvent& e);
 
-		Scope<Window> m_Window;
+		/* Window */
+		Scope<IWindow> m_Window;
 		bool m_Running = true;
-		LayerStack m_Layertack;
-		Scope<Controllers> m_Controllers;
+		bool m_Minimized = false;
+		LayerStack m_LayerStack;
+		float m_LastFrameTime;
 	};
 
-	// to be defined in client
+	// To be defined in client
 	App* CreateApp();
 
 

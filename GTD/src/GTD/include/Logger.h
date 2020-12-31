@@ -1,5 +1,5 @@
 #pragma once
-#include "..\..\PCH.h"
+//#include "..\..\PCH.h"
 
 #include "Core.h"
 
@@ -29,7 +29,7 @@ namespace GTD
         FATAL,
         NONE
     };
-
+     
     class GTD_API Logger
     {
     public:
@@ -49,6 +49,7 @@ namespace GTD
         static const WORD COLOR_GREEN;
         static const WORD COLOR_YELLOW;
         static const WORD COLOR_RED;
+        // pointer to cmdline
         static const HANDLE console;
 
         // thread guard

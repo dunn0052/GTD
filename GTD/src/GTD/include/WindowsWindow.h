@@ -1,11 +1,13 @@
 #pragma once
 #include "Window.h"
 #include "../Util/Utils.h"
+#include "../Renderer/OpenGLContext.h"
+
 #include <glfw3.h>
 
 namespace GTD {
 
-	class GTD_API WindowsWindow : public Window
+	class GTD_API WindowsWindow : public IWindow
 	{
 	public:
 		WindowsWindow(const WindowProps& props);
@@ -27,6 +29,7 @@ namespace GTD {
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
+		IContext* m_Context;
 
 		struct WindowData
 		{

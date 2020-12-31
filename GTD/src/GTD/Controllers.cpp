@@ -1,6 +1,5 @@
-#include "../PCH.h"
+#include "PCH/PCH.h"
 #include "include/Controllers.h"
-#include <glfw3.h>
 
 namespace GTD
 {
@@ -42,6 +41,12 @@ namespace GTD
 		}
 	}
 
+	static const unsigned char* nullCheckglfwGetJoystickButtons(XboxController& controller)
+	{
+		const unsigned char* ret = glfwGetJoystickButtons(controller.ID, &controller.m_numButtons);
+		return ret != NULL ? ret : controller.m_buttons;
+	}
+
 	void Controllers::OnUpdate()
 	{
 		/* could unroll here if needed */
@@ -49,14 +54,32 @@ namespace GTD
 		{
 			if (controller.connected)
 			{
-#define IF_NULL(a,b) ((a) == NULL ? (b) : (a)) // avoid crash if glfwGetJoysticButtons returns NULL
+				/* NULL checks here to prevent crash on controller disconnect */
+				const unsigned char* buttons = glfwGetJoystickButtons(controller.ID, &controller.m_numButtons);
+				if (NULL != buttons)
+				{
 				memcpy(controller.m_buttons, 
-					IF_NULL(glfwGetJoystickButtons(controller.ID, &controller.m_numButtons), controller.m_buttons), 
+					buttons, 
 					controller.m_numButtons * sizeof(char));
+				}
+				else
+				{
+					controller.connected = false;
+					continue;
+				}
+
+				const float* axis = glfwGetJoystickAxes(controller.ID, &controller.m_numAxis);
+				if (NULL != axis)
+				{
 				memcpy(controller.m_axis, 
-					IF_NULL(glfwGetJoystickAxes(controller.ID, &controller.m_numAxis), controller.m_axis), 
+					axis, 
 					controller.m_numAxis * sizeof(float));
-#undef IFNULL
+				}
+				else
+				{
+					controller.connected = false;
+					continue;
+				}
 
 #if GTD_DEBUG_MODE
 			debugXboxController(controller);

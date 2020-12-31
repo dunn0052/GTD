@@ -1,9 +1,10 @@
 #pragma once
 
-#include "../../PCH.h"
+//#include "../../PCH.h"
 
 #include "Core.h"
 #include "../Events/Events.h"
+#include "../include/Timestep.h"
 
 namespace GTD
 {
@@ -15,7 +16,7 @@ namespace GTD
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep dt) {}
 		virtual void OnEvent(Event& e) {}
 
 		inline const std::string& const GetName() { return m_DebugName; }

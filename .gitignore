@@ -2,6 +2,8 @@
 .vs/
 bin/
 bin-int/
+Game/
 
 # Files
 *.user
+go_shortcuts.txt

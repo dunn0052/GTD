@@ -21,9 +21,11 @@ namespace GTD
 		std::vector<Layer*>::iterator end() { return m_Layers.end(); }
 	private:
 
-		// IF we have a static number of layers we can make this an array with the actual layers
+		// IF we have a static number of layers we can make this an array with the actual layers instead of pointers 
+		// (maybe too much memory on the stack though..)
 		std::vector<Layer*> m_Layers;
-		std::vector<Layer*>::iterator m_layerInster;
+		std::vector<Layer*>::iterator m_LayerInsert;
+		unsigned int m_LayerInsertIndex = 0;
 	};
 }
 

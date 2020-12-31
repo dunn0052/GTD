@@ -1,5 +1,5 @@
 #pragma once
-#include "../../PCH.h"
+#include "../PCH/PCH.h"
 
 namespace GTD
 {
@@ -17,5 +17,11 @@ namespace GTD
 	constexpr Ref<T> CreateRef(Args&& ... args)
 	{
 		return std::make_shared<T>(std::forward<Args>(args)...);
+	}
+
+	template<typename T>
+	static T Clamp(const T& value, const T& lower, const T& upper)
+	{
+		return max(lower, min(value, upper));
 	}
 }

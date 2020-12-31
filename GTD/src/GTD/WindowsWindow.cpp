@@ -1,5 +1,6 @@
 #pragma once
-#include "../PCH.h"
+#include "PCH/PCH.h"
+
 #include "include/WindowsWindow.h"
 
 #include "include/Logger.h"
@@ -34,8 +35,9 @@ namespace GTD {
 		m_Data.Width = props.Width;
 		m_Data.Height = props.Height;
 
-		LOG_INFO("Creating window | TITLE: %s WIDTH:  %d HEIGHT: %d" , props.Title.c_str(), props.Width, props.Height);
 
+		LOG_INFO("Creating window | TITLE: %s | WIDTH:  %d | HEIGHT: %d" , props.Title.c_str(), props.Width, props.Height);
+		
 		if (s_GLFWWindowCount == 0)
 		{
 			glwfInitialized = glfwInit();
@@ -45,12 +47,16 @@ namespace GTD {
 
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(m_Window);
+
+		m_Context = new OpenGLContext(m_Window);
+		m_Context->Init();
+
+		// set where to render
 		++s_GLFWWindowCount;
 
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
-
+		
 		// Set GLFW callbacks
 
 		// when the window is reisized
@@ -59,7 +65,7 @@ namespace GTD {
 			{
 				// get pointer to window struct
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-				
+
 				//set that data
 				data.Width = width;
 				data.Height = height;
@@ -164,9 +170,8 @@ namespace GTD {
 
 	void WindowsWindow::OnUpdate()
 	{
-
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
+		m_Context->SwapBuffers();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)

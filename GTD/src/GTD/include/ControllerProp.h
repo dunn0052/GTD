@@ -4,7 +4,7 @@
 namespace GTD
 {
 	template<int A, int B>
-	struct ControllerProps
+	struct GTD_API ControllerProps
 	{
 		ControllerProps() 
 			: ID(0), connected(false), 
@@ -36,8 +36,10 @@ namespace GTD
 	*              C
 	*  |---------|E|E|---------|
 	*/
-	const static float axisOffsetEpsilon = 5 * pow(10, -5);
+	const static float axisOffsetEpsilon = static_cast<float>(5 * pow(10, -5));
 
-	/* controller implementation */
+	/* controller implementations */
 	using XboxController = ControllerProps<4, 16>;
+
+	using SNESController = ControllerProps<2, 10>;
 }

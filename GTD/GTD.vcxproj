@@ -11,57 +11,468 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GTD\Game\TIle.h" />
+    <ClInclude Include="src\GTD\Util\CSVLoader.h" />
+    <ClInclude Include="src\GTD\Game\Sprite.h" />
+    <ClInclude Include="src\GTD\Game\SpriteSheet.h" />
+    <ClInclude Include="src\GTD\include\Input.h" />
+    <ClInclude Include="src\GTD\include\Rect.h" />
+    <ClInclude Include="src\GTD\include\Timestep.h" />
+    <ClInclude Include="src\GTD\Renderer\OrthoGraphicCameraController.h" />
+    <ClInclude Include="src\GTD\Renderer\Renderer2D.h" />
+    <ClInclude Include="src\GTD\Renderer\ShaderLibrary.h" />
+    <ClInclude Include="src\GTD\Renderer\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\GTD\Renderer\OpenGLTexture.h" />
+    <ClInclude Include="src\GTD\Renderer\OpenGLVertexArray.h" />
+    <ClInclude Include="src\GTD\Renderer\BufferElement.h" />
+    <ClInclude Include="src\GTD\Renderer\BufferLayout.h" />
+    <ClInclude Include="src\GTD\Renderer\IShader.h" />
+    <ClInclude Include="src\GTD\Renderer\IContext.h" />
+    <ClInclude Include="src\GTD\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="src\GTD\Renderer\Renderer.h" />
+    <ClInclude Include="src\GTD\Renderer\OpenGLVertexBuffer.h" />
+    <ClInclude Include="src\GTD\Renderer\IIndexBuffer.h" />
+    <ClInclude Include="src\GTD\Renderer\OpenGLIndexBuffer.h" />
+    <ClInclude Include="src\GTD\Renderer\OpenGLShader.h" />
+    <ClInclude Include="src\GTD\include\Button.h" />
+    <ClInclude Include="src\GTD\include\ContextCodes.h" />
+    <ClInclude Include="src\GTD\include\ControllerCodes.h" />
     <ClInclude Include="src\GTD\include\ControllerProp.h" />
     <ClInclude Include="src\GTD\include\Controllers.h" />
+    <ClInclude Include="src\GTD\include\glFuncs.h" />
     <ClInclude Include="src\GTD\include\LayerStack.h" />
     <ClInclude Include="src\GTD.h" />
     <ClInclude Include="src\GTD\Events\AppEvent.h" />
     <ClInclude Include="src\GTD\Events\Events.h" />
-    <ClInclude Include="src\GTD\Events\JoypadEvent.h" />
     <ClInclude Include="src\GTD\Events\KeyEvent.h" />
     <ClInclude Include="src\GTD\Events\MouseEvent.h" />
     <ClInclude Include="src\GTD\include\App.h" />
     <ClInclude Include="src\GTD\include\Core.h" />
     <ClInclude Include="src\GTD\include\EntryPoint.h" />
     <ClInclude Include="src\GTD\include\Layer.h" />
+    <ClInclude Include="src\GTD\include\Matrix.h" />
+    <ClInclude Include="src\GTD\include\Profiler.h" />
     <ClInclude Include="src\GTD\include\WindowsWindow.h" />
     <ClInclude Include="src\GTD\include\Window.h" />
     <ClInclude Include="src\GTD\include\Logger.h" />
+    <ClInclude Include="src\GTD\Renderer\IVertexBuffer.h" />
+    <ClInclude Include="src\GTD\Renderer\OpenGLContext.h" />
+    <ClInclude Include="src\GTD\Renderer\IRendererAPI.h" />
+    <ClInclude Include="src\GTD\Renderer\RenderCommands.h" />
+    <ClInclude Include="src\GTD\Renderer\ITexture.h" />
     <ClInclude Include="src\GTD\Util\JoypadCodes.h" />
     <ClInclude Include="src\GTD\Util\KeyCodes.h" />
     <ClInclude Include="src\GTD\Util\MouseCodes.h" />
     <ClInclude Include="src\GTD\Util\Utils.h" />
-    <ClInclude Include="src\PCH.h" />
+    <ClInclude Include="src\GTD\PCH\PCH.h" />
     <ClInclude Include="src\TPP\GLFW\glfw3.h" />
     <ClInclude Include="src\TPP\GLFW\glfw3native.h" />
+    <ClInclude Include="src\GTD\Game\TileMap.h" />
+    <ClInclude Include="Vendor\GLAD\include\glad\glad.h" />
+    <ClInclude Include="Vendor\GLAD\include\KHR\khrplatform.h" />
+    <ClInclude Include="Vendor\GLFW\include\glfw3.h" />
+    <ClInclude Include="Vendor\glm\common.hpp" />
+    <ClInclude Include="Vendor\glm\detail\compute_common.hpp" />
+    <ClInclude Include="Vendor\glm\detail\compute_vector_relational.hpp" />
+    <ClInclude Include="Vendor\glm\detail\qualifier.hpp" />
+    <ClInclude Include="Vendor\glm\detail\setup.hpp" />
+    <ClInclude Include="Vendor\glm\detail\type_float.hpp" />
+    <ClInclude Include="Vendor\glm\detail\type_half.hpp" />
+    <ClInclude Include="Vendor\glm\detail\type_mat2x2.hpp" />
+    <ClInclude Include="Vendor\glm\detail\type_mat2x3.hpp" />
+    <ClInclude Include="Vendor\glm\detail\type_mat2x4.hpp" />
+    <ClInclude Include="Vendor\glm\detail\type_mat3x2.hpp" />
+    <ClInclude Include="Vendor\glm\detail\type_mat3x3.hpp" />
+    <ClInclude Include="Vendor\glm\detail\type_mat3x4.hpp" />
+    <ClInclude Include="Vendor\glm\detail\type_mat4x2.hpp" />
+    <ClInclude Include="Vendor\glm\detail\type_mat4x3.hpp" />
+    <ClInclude Include="Vendor\glm\detail\type_mat4x4.hpp" />
+    <ClInclude Include="Vendor\glm\detail\type_quat.hpp" />
+    <ClInclude Include="Vendor\glm\detail\type_vec1.hpp" />
+    <ClInclude Include="Vendor\glm\detail\type_vec2.hpp" />
+    <ClInclude Include="Vendor\glm\detail\type_vec3.hpp" />
+    <ClInclude Include="Vendor\glm\detail\type_vec4.hpp" />
+    <ClInclude Include="Vendor\glm\detail\_features.hpp" />
+    <ClInclude Include="Vendor\glm\detail\_fixes.hpp" />
+    <ClInclude Include="Vendor\glm\detail\_noise.hpp" />
+    <ClInclude Include="Vendor\glm\detail\_swizzle.hpp" />
+    <ClInclude Include="Vendor\glm\detail\_swizzle_func.hpp" />
+    <ClInclude Include="Vendor\glm\detail\_vectorize.hpp" />
+    <ClInclude Include="Vendor\glm\exponential.hpp" />
+    <ClInclude Include="Vendor\glm\ext.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_clip_space.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_common.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_double2x2.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_double2x2_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_double2x3.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_double2x3_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_double2x4.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_double2x4_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_double3x2.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_double3x2_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_double3x3.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_double3x3_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_double3x4.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_double3x4_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_double4x2.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_double4x2_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_double4x3.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_double4x3_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_double4x4.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_double4x4_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_float2x2.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_float2x2_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_float2x3.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_float2x3_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_float2x4.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_float2x4_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_float3x2.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_float3x2_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_float3x3.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_float3x3_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_float3x4.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_float3x4_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_float4x2.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_float4x2_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_float4x3.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_float4x3_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_float4x4.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_float4x4_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_int2x2.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_int2x2_sized.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_int2x3.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_int2x3_sized.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_int2x4.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_int2x4_sized.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_int3x2.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_int3x2_sized.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_int3x3.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_int3x3_sized.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_int3x4.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_int3x4_sized.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_int4x2.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_int4x2_sized.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_int4x3.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_int4x3_sized.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_int4x4.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_int4x4_sized.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_integer.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_projection.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_relational.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_transform.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_uint2x2.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_uint2x2_sized.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_uint2x3.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_uint2x3_sized.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_uint2x4.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_uint2x4_sized.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_uint3x2.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_uint3x2_sized.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_uint3x3.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_uint3x3_sized.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_uint3x4.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_uint3x4_sized.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_uint4x2.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_uint4x2_sized.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_uint4x3.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_uint4x3_sized.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_uint4x4.hpp" />
+    <ClInclude Include="Vendor\glm\ext\matrix_uint4x4_sized.hpp" />
+    <ClInclude Include="Vendor\glm\ext\quaternion_common.hpp" />
+    <ClInclude Include="Vendor\glm\ext\quaternion_double.hpp" />
+    <ClInclude Include="Vendor\glm\ext\quaternion_double_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\quaternion_exponential.hpp" />
+    <ClInclude Include="Vendor\glm\ext\quaternion_float.hpp" />
+    <ClInclude Include="Vendor\glm\ext\quaternion_float_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\quaternion_geometric.hpp" />
+    <ClInclude Include="Vendor\glm\ext\quaternion_relational.hpp" />
+    <ClInclude Include="Vendor\glm\ext\quaternion_transform.hpp" />
+    <ClInclude Include="Vendor\glm\ext\quaternion_trigonometric.hpp" />
+    <ClInclude Include="Vendor\glm\ext\scalar_common.hpp" />
+    <ClInclude Include="Vendor\glm\ext\scalar_constants.hpp" />
+    <ClInclude Include="Vendor\glm\ext\scalar_integer.hpp" />
+    <ClInclude Include="Vendor\glm\ext\scalar_int_sized.hpp" />
+    <ClInclude Include="Vendor\glm\ext\scalar_packing.hpp" />
+    <ClInclude Include="Vendor\glm\ext\scalar_reciprocal.hpp" />
+    <ClInclude Include="Vendor\glm\ext\scalar_relational.hpp" />
+    <ClInclude Include="Vendor\glm\ext\scalar_uint_sized.hpp" />
+    <ClInclude Include="Vendor\glm\ext\scalar_ulp.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_bool1.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_bool1_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_bool2.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_bool2_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_bool3.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_bool3_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_bool4.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_bool4_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_common.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_double1.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_double1_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_double2.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_double2_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_double3.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_double3_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_double4.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_double4_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_float1.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_float1_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_float2.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_float2_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_float3.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_float3_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_float4.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_float4_precision.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_int1.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_int1_sized.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_int2.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_int2_sized.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_int3.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_int3_sized.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_int4.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_int4_sized.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_integer.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_packing.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_reciprocal.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_relational.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_uint1.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_uint1_sized.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_uint2.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_uint2_sized.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_uint3.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_uint3_sized.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_uint4.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_uint4_sized.hpp" />
+    <ClInclude Include="Vendor\glm\ext\vector_ulp.hpp" />
+    <ClInclude Include="Vendor\glm\fwd.hpp" />
+    <ClInclude Include="Vendor\glm\geometric.hpp" />
+    <ClInclude Include="Vendor\glm\glm.hpp" />
+    <ClInclude Include="Vendor\glm\gtc\bitfield.hpp" />
+    <ClInclude Include="Vendor\glm\gtc\color_space.hpp" />
+    <ClInclude Include="Vendor\glm\gtc\constants.hpp" />
+    <ClInclude Include="Vendor\glm\gtc\epsilon.hpp" />
+    <ClInclude Include="Vendor\glm\gtc\integer.hpp" />
+    <ClInclude Include="Vendor\glm\gtc\matrix_access.hpp" />
+    <ClInclude Include="Vendor\glm\gtc\matrix_integer.hpp" />
+    <ClInclude Include="Vendor\glm\gtc\matrix_inverse.hpp" />
+    <ClInclude Include="Vendor\glm\gtc\matrix_transform.hpp" />
+    <ClInclude Include="Vendor\glm\gtc\noise.hpp" />
+    <ClInclude Include="Vendor\glm\gtc\packing.hpp" />
+    <ClInclude Include="Vendor\glm\gtc\quaternion.hpp" />
+    <ClInclude Include="Vendor\glm\gtc\random.hpp" />
+    <ClInclude Include="Vendor\glm\gtc\reciprocal.hpp" />
+    <ClInclude Include="Vendor\glm\gtc\round.hpp" />
+    <ClInclude Include="Vendor\glm\gtc\type_aligned.hpp" />
+    <ClInclude Include="Vendor\glm\gtc\type_precision.hpp" />
+    <ClInclude Include="Vendor\glm\gtc\type_ptr.hpp" />
+    <ClInclude Include="Vendor\glm\gtc\ulp.hpp" />
+    <ClInclude Include="Vendor\glm\gtc\vec1.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\associated_min_max.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\bit.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\closest_point.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\color_encoding.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\color_space.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\color_space_YCoCg.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\common.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\compatibility.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\component_wise.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\dual_quaternion.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\easing.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\euler_angles.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\extend.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\extended_min_max.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\exterior_product.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\fast_exponential.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\fast_square_root.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\fast_trigonometry.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\functions.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\gradient_paint.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\handed_coordinate_space.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\hash.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\integer.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\intersect.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\io.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\log_base.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\matrix_cross_product.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\matrix_decompose.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\matrix_factorisation.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\matrix_interpolation.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\matrix_major_storage.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\matrix_operation.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\matrix_query.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\matrix_transform_2d.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\mixed_product.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\norm.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\normal.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\normalize_dot.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\number_precision.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\optimum_pow.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\orthonormalize.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\perpendicular.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\polar_coordinates.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\projection.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\quaternion.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\range.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\raw_data.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\rotate_normalized_axis.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\rotate_vector.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\scalar_multiplication.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\scalar_relational.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\spline.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\std_based_type.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\string_cast.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\texture.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\transform.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\transform2.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\type_aligned.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\type_trait.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\vector_angle.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\vector_query.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\vec_swizzle.hpp" />
+    <ClInclude Include="Vendor\glm\gtx\wrap.hpp" />
+    <ClInclude Include="Vendor\glm\integer.hpp" />
+    <ClInclude Include="Vendor\glm\mat2x2.hpp" />
+    <ClInclude Include="Vendor\glm\mat2x3.hpp" />
+    <ClInclude Include="Vendor\glm\mat2x4.hpp" />
+    <ClInclude Include="Vendor\glm\mat3x2.hpp" />
+    <ClInclude Include="Vendor\glm\mat3x3.hpp" />
+    <ClInclude Include="Vendor\glm\mat3x4.hpp" />
+    <ClInclude Include="Vendor\glm\mat4x2.hpp" />
+    <ClInclude Include="Vendor\glm\mat4x3.hpp" />
+    <ClInclude Include="Vendor\glm\mat4x4.hpp" />
+    <ClInclude Include="Vendor\glm\matrix.hpp" />
+    <ClInclude Include="Vendor\glm\packing.hpp" />
+    <ClInclude Include="Vendor\glm\simd\common.h" />
+    <ClInclude Include="Vendor\glm\simd\exponential.h" />
+    <ClInclude Include="Vendor\glm\simd\geometric.h" />
+    <ClInclude Include="Vendor\glm\simd\integer.h" />
+    <ClInclude Include="Vendor\glm\simd\matrix.h" />
+    <ClInclude Include="Vendor\glm\simd\neon.h" />
+    <ClInclude Include="Vendor\glm\simd\packing.h" />
+    <ClInclude Include="Vendor\glm\simd\platform.h" />
+    <ClInclude Include="Vendor\glm\simd\trigonometric.h" />
+    <ClInclude Include="Vendor\glm\simd\vector_relational.h" />
+    <ClInclude Include="Vendor\glm\trigonometric.hpp" />
+    <ClInclude Include="Vendor\glm\vec2.hpp" />
+    <ClInclude Include="Vendor\glm\vec3.hpp" />
+    <ClInclude Include="Vendor\glm\vec4.hpp" />
+    <ClInclude Include="Vendor\glm\vector_relational.hpp" />
+    <ClInclude Include="src\GTD\Renderer\IVertexArray.h" />
+    <ClInclude Include="Vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\GTD\Util\CSVLoader.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Game\Sprite.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Game\SpriteSheet.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Renderer\OrthoGraphicCameraController.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Renderer\Renderer2D.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Renderer\ShaderLibrary.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Renderer\OpenGLRendererAPI.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Renderer\IRendererAPI.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Renderer\OpenGLTexture.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Renderer\OpenGLVertexArray.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Renderer\IShader.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Renderer\IIndexBuffer.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Renderer\IVertexBuffer.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Renderer\OrthographicCamera.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Renderer\Renderer.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Renderer\OpenGLVertexBuffer.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Renderer\OpenGLIndexBuffer.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Renderer\OpenGLShader.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
     <ClCompile Include="src\GTD\Controllers.cpp">
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">PCH/PCH.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="src\GTD\LayerStack.cpp">
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">PCH/PCH.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="src\GTD\App.cpp">
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">PCH/PCH.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="src\GTD\Layer.cpp">
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">PCH/PCH.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="src\GTD\Logger.cpp">
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Renderer\OpenGLContext.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Renderer\RenderCommands.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Renderer\ITexture.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="src\GTD\Window.cpp">
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">PCH/PCH.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="src\GTD\WindowsWindow.cpp">
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">PCH/PCH.h</PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="src\PCH.cpp">
+    <ClCompile Include="src\GTD\PCH\PCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
       </PrecompiledHeaderFile>
@@ -69,9 +480,175 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeaderFile>
     </ClCompile>
+    <ClCompile Include="src\GTD\Game\TileMap.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="Vendor\GLAD\src\glad.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="Vendor\glm\detail\glm.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Renderer\IVertexArray.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="Vendor\stb_image\stb_image.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../../src/GTD/PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../../src/GTD/PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\TPP\GLFW\glfw3.dll" />
+    <None Include="Vendor\glm\detail\func_common.inl" />
+    <None Include="Vendor\glm\detail\func_common_simd.inl" />
+    <None Include="Vendor\glm\detail\func_exponential.inl" />
+    <None Include="Vendor\glm\detail\func_exponential_simd.inl" />
+    <None Include="Vendor\glm\detail\func_geometric.inl" />
+    <None Include="Vendor\glm\detail\func_geometric_simd.inl" />
+    <None Include="Vendor\glm\detail\func_integer.inl" />
+    <None Include="Vendor\glm\detail\func_integer_simd.inl" />
+    <None Include="Vendor\glm\detail\func_matrix.inl" />
+    <None Include="Vendor\glm\detail\func_matrix_simd.inl" />
+    <None Include="Vendor\glm\detail\func_packing.inl" />
+    <None Include="Vendor\glm\detail\func_packing_simd.inl" />
+    <None Include="Vendor\glm\detail\func_trigonometric.inl" />
+    <None Include="Vendor\glm\detail\func_trigonometric_simd.inl" />
+    <None Include="Vendor\glm\detail\func_vector_relational.inl" />
+    <None Include="Vendor\glm\detail\func_vector_relational_simd.inl" />
+    <None Include="Vendor\glm\detail\type_half.inl" />
+    <None Include="Vendor\glm\detail\type_mat2x2.inl" />
+    <None Include="Vendor\glm\detail\type_mat2x3.inl" />
+    <None Include="Vendor\glm\detail\type_mat2x4.inl" />
+    <None Include="Vendor\glm\detail\type_mat3x2.inl" />
+    <None Include="Vendor\glm\detail\type_mat3x3.inl" />
+    <None Include="Vendor\glm\detail\type_mat3x4.inl" />
+    <None Include="Vendor\glm\detail\type_mat4x2.inl" />
+    <None Include="Vendor\glm\detail\type_mat4x3.inl" />
+    <None Include="Vendor\glm\detail\type_mat4x4.inl" />
+    <None Include="Vendor\glm\detail\type_mat4x4_simd.inl" />
+    <None Include="Vendor\glm\detail\type_quat.inl" />
+    <None Include="Vendor\glm\detail\type_quat_simd.inl" />
+    <None Include="Vendor\glm\detail\type_vec1.inl" />
+    <None Include="Vendor\glm\detail\type_vec2.inl" />
+    <None Include="Vendor\glm\detail\type_vec3.inl" />
+    <None Include="Vendor\glm\detail\type_vec4.inl" />
+    <None Include="Vendor\glm\detail\type_vec4_simd.inl" />
+    <None Include="Vendor\glm\ext\matrix_clip_space.inl" />
+    <None Include="Vendor\glm\ext\matrix_common.inl" />
+    <None Include="Vendor\glm\ext\matrix_integer.inl" />
+    <None Include="Vendor\glm\ext\matrix_projection.inl" />
+    <None Include="Vendor\glm\ext\matrix_relational.inl" />
+    <None Include="Vendor\glm\ext\matrix_transform.inl" />
+    <None Include="Vendor\glm\ext\quaternion_common.inl" />
+    <None Include="Vendor\glm\ext\quaternion_common_simd.inl" />
+    <None Include="Vendor\glm\ext\quaternion_exponential.inl" />
+    <None Include="Vendor\glm\ext\quaternion_geometric.inl" />
+    <None Include="Vendor\glm\ext\quaternion_relational.inl" />
+    <None Include="Vendor\glm\ext\quaternion_transform.inl" />
+    <None Include="Vendor\glm\ext\quaternion_trigonometric.inl" />
+    <None Include="Vendor\glm\ext\scalar_common.inl" />
+    <None Include="Vendor\glm\ext\scalar_constants.inl" />
+    <None Include="Vendor\glm\ext\scalar_integer.inl" />
+    <None Include="Vendor\glm\ext\scalar_packing.inl" />
+    <None Include="Vendor\glm\ext\scalar_reciprocal.inl" />
+    <None Include="Vendor\glm\ext\scalar_relational.inl" />
+    <None Include="Vendor\glm\ext\scalar_ulp.inl" />
+    <None Include="Vendor\glm\ext\vector_common.inl" />
+    <None Include="Vendor\glm\ext\vector_integer.inl" />
+    <None Include="Vendor\glm\ext\vector_packing.inl" />
+    <None Include="Vendor\glm\ext\vector_reciprocal.inl" />
+    <None Include="Vendor\glm\ext\vector_relational.inl" />
+    <None Include="Vendor\glm\ext\vector_ulp.inl" />
+    <None Include="Vendor\glm\gtc\bitfield.inl" />
+    <None Include="Vendor\glm\gtc\color_space.inl" />
+    <None Include="Vendor\glm\gtc\constants.inl" />
+    <None Include="Vendor\glm\gtc\epsilon.inl" />
+    <None Include="Vendor\glm\gtc\integer.inl" />
+    <None Include="Vendor\glm\gtc\matrix_access.inl" />
+    <None Include="Vendor\glm\gtc\matrix_inverse.inl" />
+    <None Include="Vendor\glm\gtc\matrix_transform.inl" />
+    <None Include="Vendor\glm\gtc\noise.inl" />
+    <None Include="Vendor\glm\gtc\packing.inl" />
+    <None Include="Vendor\glm\gtc\quaternion.inl" />
+    <None Include="Vendor\glm\gtc\quaternion_simd.inl" />
+    <None Include="Vendor\glm\gtc\random.inl" />
+    <None Include="Vendor\glm\gtc\round.inl" />
+    <None Include="Vendor\glm\gtc\type_precision.inl" />
+    <None Include="Vendor\glm\gtc\type_ptr.inl" />
+    <None Include="Vendor\glm\gtc\ulp.inl" />
+    <None Include="Vendor\glm\gtx\associated_min_max.inl" />
+    <None Include="Vendor\glm\gtx\bit.inl" />
+    <None Include="Vendor\glm\gtx\closest_point.inl" />
+    <None Include="Vendor\glm\gtx\color_encoding.inl" />
+    <None Include="Vendor\glm\gtx\color_space.inl" />
+    <None Include="Vendor\glm\gtx\color_space_YCoCg.inl" />
+    <None Include="Vendor\glm\gtx\common.inl" />
+    <None Include="Vendor\glm\gtx\compatibility.inl" />
+    <None Include="Vendor\glm\gtx\component_wise.inl" />
+    <None Include="Vendor\glm\gtx\dual_quaternion.inl" />
+    <None Include="Vendor\glm\gtx\easing.inl" />
+    <None Include="Vendor\glm\gtx\euler_angles.inl" />
+    <None Include="Vendor\glm\gtx\extend.inl" />
+    <None Include="Vendor\glm\gtx\extended_min_max.inl" />
+    <None Include="Vendor\glm\gtx\exterior_product.inl" />
+    <None Include="Vendor\glm\gtx\fast_exponential.inl" />
+    <None Include="Vendor\glm\gtx\fast_square_root.inl" />
+    <None Include="Vendor\glm\gtx\fast_trigonometry.inl" />
+    <None Include="Vendor\glm\gtx\float_notmalize.inl" />
+    <None Include="Vendor\glm\gtx\functions.inl" />
+    <None Include="Vendor\glm\gtx\gradient_paint.inl" />
+    <None Include="Vendor\glm\gtx\handed_coordinate_space.inl" />
+    <None Include="Vendor\glm\gtx\hash.inl" />
+    <None Include="Vendor\glm\gtx\integer.inl" />
+    <None Include="Vendor\glm\gtx\intersect.inl" />
+    <None Include="Vendor\glm\gtx\io.inl" />
+    <None Include="Vendor\glm\gtx\log_base.inl" />
+    <None Include="Vendor\glm\gtx\matrix_cross_product.inl" />
+    <None Include="Vendor\glm\gtx\matrix_decompose.inl" />
+    <None Include="Vendor\glm\gtx\matrix_factorisation.inl" />
+    <None Include="Vendor\glm\gtx\matrix_interpolation.inl" />
+    <None Include="Vendor\glm\gtx\matrix_major_storage.inl" />
+    <None Include="Vendor\glm\gtx\matrix_operation.inl" />
+    <None Include="Vendor\glm\gtx\matrix_query.inl" />
+    <None Include="Vendor\glm\gtx\matrix_transform_2d.inl" />
+    <None Include="Vendor\glm\gtx\mixed_product.inl" />
+    <None Include="Vendor\glm\gtx\norm.inl" />
+    <None Include="Vendor\glm\gtx\normal.inl" />
+    <None Include="Vendor\glm\gtx\normalize_dot.inl" />
+    <None Include="Vendor\glm\gtx\number_precision.inl" />
+    <None Include="Vendor\glm\gtx\optimum_pow.inl" />
+    <None Include="Vendor\glm\gtx\orthonormalize.inl" />
+    <None Include="Vendor\glm\gtx\perpendicular.inl" />
+    <None Include="Vendor\glm\gtx\polar_coordinates.inl" />
+    <None Include="Vendor\glm\gtx\projection.inl" />
+    <None Include="Vendor\glm\gtx\quaternion.inl" />
+    <None Include="Vendor\glm\gtx\raw_data.inl" />
+    <None Include="Vendor\glm\gtx\rotate_normalized_axis.inl" />
+    <None Include="Vendor\glm\gtx\rotate_vector.inl" />
+    <None Include="Vendor\glm\gtx\scalar_relational.inl" />
+    <None Include="Vendor\glm\gtx\spline.inl" />
+    <None Include="Vendor\glm\gtx\std_based_type.inl" />
+    <None Include="Vendor\glm\gtx\string_cast.inl" />
+    <None Include="Vendor\glm\gtx\texture.inl" />
+    <None Include="Vendor\glm\gtx\transform.inl" />
+    <None Include="Vendor\glm\gtx\transform2.inl" />
+    <None Include="Vendor\glm\gtx\type_aligned.inl" />
+    <None Include="Vendor\glm\gtx\type_trait.inl" />
+    <None Include="Vendor\glm\gtx\vector_angle.inl" />
+    <None Include="Vendor\glm\gtx\vector_query.inl" />
+    <None Include="Vendor\glm\gtx\wrap.inl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -110,11 +687,13 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)\bin\$(Configuration)\$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)\bin-int\$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
+    <IncludePath>$(SolutionDir)GTD\Vendor\GLFW\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)GTD\Vendor\GLAD\include;$(SolutionDir)GTD\Vendor\glm\;$(SolutionDir)GTD\Vendor\stb_image;$(SolutionDir)GTD\Vendor;$(SolutionDir)src\GTD\include;$(SolutionDir)src\GTD\PCH</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LinkIncremental>false</LinkIncremental>
+    <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)\bin\$(Configuration)\$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)\bin-int\$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
+    <IncludePath>$(SolutionDir)GTD\Vendor\GLFW\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)GTD\Vendor\GLAD\include;$(SolutionDir)GTD\Vendor\glm\;$(SolutionDir)GTD\Vendor\stb_image;$(SolutionDir)GTD\Vendor;$(SolutionDir)src\GTD\include;$(SolutionDir)src\GTD\PCH</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -124,13 +703,13 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>PCH.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)Vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\GTD\Vendor\stb_image;$(SolutionDir)\GTD\Vendor\GLFW\include;$(SolutionDir)\GTD\Vendor\GLAD;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)Vendor\GLFW\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;User32.lib;gdi32.lib;shell32.lib;opengl32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)GTD\Vendor\GLFW\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;User32.lib;gdi32.lib;shell32.lib;</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /y "$(OutDir)GTD.dll" "$(SolutionDir)bin\$(Configuration)\$(Platform)\Sandbox\"</Command>
@@ -149,15 +728,15 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>PCH.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)Vendor\GFLW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\GTD\Vendor\stb_image;$(SolutionDir)\GTD\Vendor\GLFW\include;$(SolutionDir)\GTD\Vendor\GLAD;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)Vendor\GFLW\lib;</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)GTD\Vendor\GLFW\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;User32.lib;gdi32.lib;shell32.lib;</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /y "$(OutDir)GTD.dll" "$(SolutionDir)bin\$(Configuration)\$(Platform)\Sandbox\"</Command>
