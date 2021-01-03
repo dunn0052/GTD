@@ -27,8 +27,17 @@
 #include "GTD/Renderer/ITexture.h"
 #include "GTD/Renderer/OrthographicCamera.h"
 #include "GTD/Renderer/OrthographicCameraController.h"
+#include "GTD/Renderer/IFrameBuffer.h"
 
 #include "GTD/Game/SpriteSheet.h"
 #include "GTD/Game/Sprite.h"
+#include "GTD/Game/SpriteE.h"
+#include "GTD/Game/PC.h"
 #include "GTD/Game/TileMap.h"
+#include "GTD/Game/TileMapE.h"
 #include "GTD/Game/TIle.h"
+
+#include "GTD/Game/ECS/EntityDirector.h"
+#include "GTD/Game/ECS/Entity.h"
+#include "GTD/Game//ECS/IComponent.h"
+#include "GTD/Game//ECS/Drawable.h"

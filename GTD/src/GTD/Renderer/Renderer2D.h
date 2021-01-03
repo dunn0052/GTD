@@ -5,6 +5,7 @@
 #include "../Game/Sprite.h"
 #include "../Game/TIle.h"
 #include "../Game/TIleMap.h"
+#include "../Game/ECS/Animated.h"
 
 namespace GTD
 {
@@ -20,12 +21,14 @@ namespace GTD
 
 		static void ResetBatch();
 
+		static float SubmitTexture(const Ref<ITexture2D>& texture);
+
 		// Primatives
 		static void DrawQuad(const glm::vec2& position, const glm::vec2& size, const glm::vec4& color);
 		static void DrawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color);
 
 		static void DrawQuad(const Ref<Quad>& quad);
-		static void DrawQuad(const Ref<Sprite>& quad);
+		static void DrawQuad(const Ref<Sprite>& sprite);
 		static void DrawQuad(const Tile& tile, const Ref<SpriteSheet> spriteSheet);
 		static void DrawQuad(const Ref<TileMap>& tileMap);
 
@@ -36,6 +39,8 @@ namespace GTD
 		static void DrawQuad(const glm::vec3& position, const glm::vec2& size,const Ref<ITexture2D>& texture, const glm::vec4& color, const glm::vec2 textureCoords[4]);
 
 		static void DrawRotatedQuad(const glm::vec3& position, const glm::vec2& size, const Ref<ITexture2D>& texture, const glm::vec4& color, const float rotation = 0.0f);
+
+		static void Draw(const Animated& animated, float textureIndex);
 
 	private:
 		static const std::string u_ViewProjection;

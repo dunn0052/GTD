@@ -17,13 +17,14 @@ private:
 	GTD::Controllers m_Controllers;
 
 	// temp
-	GTD::Ref<GTD::ITexture2D> m_Texture;
 	GTD::Ref<GTD::SpriteSheet> m_SpriteSheet;
-	std::vector<GTD::Ref<GTD::TileMap>> m_Maps;
-	GTD::Tile m_Tile;
+	GTD::Ref<GTD::SpriteSheet> m_SpriteEntitySheet;
+	std::vector<GTD::Ref<GTD::TileMapE>> m_EMaps;
 	GTD::Ref<GTD::Sprite> m_Sprite;
-	GTD::Ref<GTD::IShader> m_FlatColorShader;
-	GTD::Ref<GTD::IVertexArray> m_VertexArray;
+	GTD::Ref<GTD::EntityDirector> m_Director;
+	GTD::Ref<GTD::SpriteE> m_EntitySprite;
+	GTD::Ref<GTD::PC> m_PC;
+
 	glm::vec4 m_Color;
 	const std::string u_Color;
 	GTD::Ref<GTD::Quad> m_Quad;

@@ -10,16 +10,16 @@ namespace GTD
 	{
 		switch (Renderer::GetAPI())
 		{
-		case IRendererAPI::API::OPENGL:
-		{
-			return CreateRef<OpenGLShader>(filePath);
-		}
-		case IRendererAPI::API::NONE:
-		default:
-		{
-			LOG_WARN("Renderer not found");
-			GTD_ASSERT(false, "");
-		}
+			case IRendererAPI::API::OPENGL:
+			{
+				return CreateRef<OpenGLShader>(filePath);
+			}
+			case IRendererAPI::API::NONE:
+			default:
+			{
+				LOG_WARN("Renderer not found");
+				GTD_ASSERT(false, "");
+			}
 		}
 
 		return nullptr;

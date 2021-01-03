@@ -19,8 +19,8 @@ namespace GTD
 	void OrthographicCamera::RecalculateViewMatrix()
 	{
 		m_ViewMatrix = glm::translate(glm::mat4(1.0f), -m_Position) *
-			glm::rotate(glm::mat4(1.0f), -glm::radians(m_Rotation), glm::vec3(0, 0, 1));
+			glm::rotate(glm::mat4(1.0f), -glm::radians(m_Rotation), glm::vec3(0, 0, 1)); 
 		
-		m_ViewProjectionMatrix = m_ProjectionMatrix * m_ViewMatrix;
+		m_ViewProjectionMatrix = m_ProjectionMatrix * m_ViewMatrix; //	Why TF does this not work??
 	}
 }

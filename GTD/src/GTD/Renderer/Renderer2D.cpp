@@ -123,7 +123,7 @@ namespace GTD
 	void Renderer2D::BeginScene(const OrthographicCamera camera)
 	{
 		s_Data.ComboShader->Bind();
-		s_Data.ComboShader->Set(u_ViewProjection, camera.GetProjectionMatrix());
+		s_Data.ComboShader->Set(u_ViewProjection, camera.GetViewProjectionMatrix());
 
 		ResetBatch();
 	}
@@ -154,6 +154,29 @@ namespace GTD
 		s_Data.QuadVertexBufferPtr = s_Data.QuadVertexBufferBase;
 
 		s_Data.TextureSlotIndex = 1;
+	}
+
+	float Renderer2D::SubmitTexture(Ref<ITexture2D>& texture)
+	{
+		float textureIndex = 0.0f;
+
+		for (uint32_t i = 1; i < s_Data.TextureSlotIndex; i++)
+		{
+			if (*s_Data.TextureSlots[i].get() == *texture.get())
+			{
+				textureIndex = (float)i;
+				break;
+			}
+		}
+
+		if (0.0f == textureIndex)
+		{
+			textureIndex = (float)s_Data.TextureSlotIndex;
+			s_Data.TextureSlots[s_Data.TextureSlotIndex] = texture;
+			s_Data.TextureSlotIndex++;
+		}
+
+		return textureIndex;
 	}
 
 	//--------------------------------------- GEOMETRY -----------------------------------------//
@@ -209,16 +232,6 @@ namespace GTD
 	/* the one true quad drawer */
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<ITexture2D>& texture, const glm::vec4& color, const glm::vec2 textureCoords[4])
 	{
-#if 0
-		constexpr glm::vec2 textureCoords[] =
-		{
-			{0.0f, 0.0f},
-			{1.0f, 0.0f},
-			{1.0f, 1.0f},
-			{0.0f, 1.0f}
-		};
-#endif
-
 		if (s_Data.QuadIndexCount > Renderer2DData::MaxIndices)
 		{
 			EndScene();
@@ -287,5 +300,42 @@ namespace GTD
 			glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
 
 		s_Data.ComboShader->Set(u_Transform, transform);
+	}
+
+	void Renderer2D::Draw(const Animated& animated, float textureIndex)
+	{
+		/*
+		GTD_ASSERT(textureIndex < s_Data.TextureSlotIndex, "Texture has not been loaded!");
+
+		s_Data.QuadVertexBufferPtr->Position = animated;
+		s_Data.QuadVertexBufferPtr->Color = color;
+		s_Data.QuadVertexBufferPtr->TexCoord = textureCoords[0];
+		s_Data.QuadVertexBufferPtr->TexIndex = textureIndex;
+		s_Data.QuadVertexBufferPtr++;
+
+		s_Data.QuadVertexBufferPtr->Position = { position.x + size.x, position.y, position.z };
+		s_Data.QuadVertexBufferPtr->Color = color;
+		s_Data.QuadVertexBufferPtr->TexCoord = textureCoords[1];
+		s_Data.QuadVertexBufferPtr->TexIndex = textureIndex;
+		s_Data.QuadVertexBufferPtr++;
+
+		s_Data.QuadVertexBufferPtr->Position = { position.x + size.x, position.y + size.y, position.z };
+		s_Data.QuadVertexBufferPtr->Color = color;
+		s_Data.QuadVertexBufferPtr->TexCoord = textureCoords[2];
+		s_Data.QuadVertexBufferPtr->TexIndex = textureIndex;
+		s_Data.QuadVertexBufferPtr++;
+
+		s_Data.QuadVertexBufferPtr->Position = { position.x, position.y + size.y, position.z };
+		s_Data.QuadVertexBufferPtr->Color = color;
+		s_Data.QuadVertexBufferPtr->TexCoord = textureCoords[3];
+		s_Data.QuadVertexBufferPtr->TexIndex = textureIndex;
+		s_Data.QuadVertexBufferPtr++;
+
+		++s_Data.QuadIndexCount;
+		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) *
+			glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
+
+		s_Data.ComboShader->Set(u_Transform, transform);
+		*/
 	}
 }

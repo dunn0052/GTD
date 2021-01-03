@@ -10,8 +10,9 @@ Layer2D::Layer2D()
 
 void Layer2D::OnAttach()
 {
-	m_Texture = GTD::ITexture2D::Create("assets/images/mariot.png");
-	m_SpriteSheet = GTD::CreateRef<GTD::SpriteSheet>("../Game/spritesheets/autumn.png", glm::vec2{ 32.0, 32.0 });
+	m_Director = GTD::CreateRef<GTD::EntityDirector>();
+	m_SpriteSheet = GTD::CreateRef<GTD::SpriteSheet>("../Game/spritesheets/autumn.png", glm::vec2{ 32.0f, 32.0f });
+	m_SpriteEntitySheet = GTD::CreateRef<GTD::SpriteSheet>("../Game/spritesheets/csBig.png", glm::vec2{ 60.0f, 80.0f });
 	m_Quad = GTD::CreateRef<GTD::Quad>( GTD::Rect({0.5f, -0.5f, 0.0f}, {1.0f, 1.0f}) );
 
 	/*
@@ -22,20 +23,39 @@ void Layer2D::OnAttach()
 	m_Maps.push_back(GTD::CreateRef<GTD::TileMap>("../Game/levelData/ICE_TOWN_Tile Layer 5.csv", m_SpriteSheet, 0.02f));
 	*/
 
-	m_Maps.push_back(GTD::CreateRef<GTD::TileMap>("../Game/levelData/TEST_AUTUMN_Tile Layer 1.csv", m_SpriteSheet, -0.02f));
-	m_Maps.push_back(GTD::CreateRef<GTD::TileMap>("../Game/levelData/TEST_AUTUMN_Tile Layer 2.csv", m_SpriteSheet, -0.01f));
+	GTD::TileMapProps tileMapProps = {};
+	tileMapProps.Position = { -6.0f, 0.0f, -0.02f };
+	tileMapProps.SpriteSheet = m_SpriteSheet;
+	tileMapProps.Tint = glm::vec4(1.0f);
+	tileMapProps.TileMapCSVPath = "../Game/levelData/TEST_AUTUMN_Tile Layer 1.csv";
 
 
-	for (auto& map : m_Maps)
+	m_EMaps.push_back(m_Director->Create(tileMapProps));
+
+	GTD::PCProps pcParms = 
 	{
-		map->SetRelativePosition({ -6.0, -4.0f, 0.0f });
-	}
-	
-	m_Tile = GTD::Tile({ 0.0f ,0.0f ,0.0f }, 0);
+		m_SpriteEntitySheet,
+		0,
+		GTD::Quad(),
+		m_Controllers.GetXboxControllerP(0)
+	};
 
-	m_Maps[1]->SetTint({ 0.5f, 0.0f, 0.8f, 0.3f });
+	m_PC = m_Director->Create(pcParms);
+
+	tileMapProps.Position = { -6.0f, 0.0f, 0.1f };
+	tileMapProps.TileMapCSVPath = "../Game/levelData/TEST_AUTUMN_Tile Layer 2.csv";
+	tileMapProps.Tint = {0.5f, 0.0f, 0.8f, 0.8f};
+
+	m_EMaps.push_back(m_Director->Create(tileMapProps));
 
 	m_Sprite = GTD::CreateRef<GTD::Sprite>(m_SpriteSheet->GetTile(141), m_Quad);
+
+	m_PC->AddAction(GTD::ContextCode::UP, [](const GTD::ControlCallbackParams& param) { GTD::PC* pc = (GTD::PC*)param.object; pc->Move({ 0.0f, 0.1f, 0.0f }); });
+	m_PC->AddAction(GTD::ContextCode::DOWN, [](const GTD::ControlCallbackParams& param) { GTD::PC* pc = (GTD::PC*)param.object; pc->Move({ 0.0f, -0.1f, 0.0f }); });
+	m_PC->AddAction(GTD::ContextCode::LEFT, [](const GTD::ControlCallbackParams& param) { GTD::PC* pc = (GTD::PC*)param.object; pc->Move({ -0.1f, 0.0f, 0.0f }); });
+	m_PC->AddAction(GTD::ContextCode::RIGHT, [](const GTD::ControlCallbackParams& param) { GTD::PC* pc = (GTD::PC*)param.object; pc->Move({ 0.1f, 0.0f, 0.0f }); });
+	m_PC->AddAction(GTD::ContextCode::LT, [](const GTD::ControlCallbackParams& param) { GTD::PC* pc = (GTD::PC*)param.object; pc->NextFrame(); });
+	m_PC->AddAction(GTD::ContextCode::RT, [](const GTD::ControlCallbackParams& param) { GTD::PC* pc = (GTD::PC*)param.object; pc->Kill(); });
 }
 
 void Layer2D::OnUpdate(GTD::Timestep dt)
@@ -44,26 +64,18 @@ void Layer2D::OnUpdate(GTD::Timestep dt)
 	m_Controllers.OnUpdate();
 	m_CameraController.OnUpdate(dt, m_Controllers);
 
+	GTD::XboxController controller = m_Controllers.GetXboxController(0);
+
 	GTD::RenderCommand::SetClearColor({ 0.2f, 0.2f, 0.2f, 0.5f });
 	GTD::RenderCommand::Clear();
 
 	GTD::Renderer2D::BeginScene(m_CameraController.GetCamera());
-	for (auto& map : m_Maps)
-	{
-		GTD::Renderer2D::DrawQuad(map);
-	}
-	//GTD::Renderer2D::DrawQuad(m_Tile, m_SpriteSheet);
+	
+	m_Director->Update();
 
-	//GTD::Renderer2D::DrawQuad(m_Tile);
-
-	//GTD::Renderer2D::DrawQuad(m_Sprite);
-
-	//GTD::Renderer2D::DrawQuad({ 0.0f, 0.0f}, { 1.0f, 1.0f }, m_Texture);
-	//GTD::Renderer2D::DrawQuad({ -0.5f, -0.5f, -0.01f }, { 1.0f, 1.0f }, m_Texture);
-	//GTD::Renderer2D::DrawQuad(m_Quad);
+	GTD::Renderer2D::DrawQuad(m_Sprite);
 
 	GTD::Renderer2D::EndScene();
-	GTD::Renderer2D::Flush();
 }
 
 void Layer2D::OnDetach()

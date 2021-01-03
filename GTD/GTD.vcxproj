@@ -11,7 +11,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GTD\Game\ECS\Callbacks.h" />
+    <ClInclude Include="src\GTD\Game\ECS\Controllable.h" />
+    <ClInclude Include="src\GTD\Game\PC.h" />
+    <ClInclude Include="src\GTD\Game\TileMapE.h" />
+    <ClInclude Include="src\GTD\Game\ECS\Animated.h" />
+    <ClInclude Include="src\GTD\Game\ECS\EntityDirector.h" />
+    <ClInclude Include="src\GTD\Game\ECS\Drawable.h" />
+    <ClInclude Include="src\GTD\Game\ECS\Entity.h" />
+    <ClInclude Include="src\GTD\Game\ECS\IComponent.h" />
+    <ClInclude Include="src\GTD\Game\SpriteE.h" />
     <ClInclude Include="src\GTD\Game\TIle.h" />
+    <ClInclude Include="src\GTD\Renderer\IFrameBuffer.h" />
+    <ClInclude Include="src\GTD\Renderer\OpenGLFrameBuffer.h" />
     <ClInclude Include="src\GTD\Util\CSVLoader.h" />
     <ClInclude Include="src\GTD\Game\Sprite.h" />
     <ClInclude Include="src\GTD\Game\SpriteSheet.h" />
@@ -68,6 +80,102 @@
     <ClInclude Include="src\TPP\GLFW\glfw3.h" />
     <ClInclude Include="src\TPP\GLFW\glfw3native.h" />
     <ClInclude Include="src\GTD\Game\TileMap.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\config\ftconfig.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\config\ftheader.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\config\ftmodule.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\config\ftoption.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\config\ftstdlib.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\config\integer-types.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\config\mac-support.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\config\public-macros.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\freetype.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftadvanc.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftbbox.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftbdf.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftbitmap.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftbzip2.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftcache.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftchapters.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftcid.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftcolor.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftdriver.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\fterrdef.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\fterrors.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftfntfmt.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftgasp.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftglyph.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftgxval.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftgzip.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftimage.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftincrem.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftlcdfil.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftlist.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftlzw.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftmac.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftmm.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftmodapi.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftmoderr.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftotval.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftoutln.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftparams.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftpfr.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftrender.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftsizes.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftsnames.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftstroke.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftsynth.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftsystem.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\fttrigon.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\fttypes.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ftwinfnt.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\autohint.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\cffotypes.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\cfftypes.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\compiler-macros.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\ftcalc.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\ftdebug.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\ftdrv.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\ftgloadr.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\fthash.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\ftmemory.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\ftobjs.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\ftpsprop.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\ftrfork.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\ftserv.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\ftstream.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\fttrace.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\ftvalid.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\psaux.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\pshints.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\services\svbdf.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\services\svcfftl.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\services\svcid.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\services\svfntfmt.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\services\svgldict.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\services\svgxval.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\services\svkern.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\services\svmetric.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\services\svmm.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\services\svotval.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\services\svpfr.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\services\svpostnm.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\services\svprop.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\services\svpscmap.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\services\svpsinfo.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\services\svsfnt.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\services\svttcmap.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\services\svtteng.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\services\svttglyf.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\services\svwinfnt.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\sfnt.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\t1types.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\tttypes.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\internal\wofftypes.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\t1tables.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\ttnameid.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\tttables.h" />
+    <ClInclude Include="Vendor\freetype\include\freetype\tttags.h" />
+    <ClInclude Include="Vendor\freetype\include\ft2build.h" />
     <ClInclude Include="Vendor\GLAD\include\glad\glad.h" />
     <ClInclude Include="Vendor\GLAD\include\KHR\khrplatform.h" />
     <ClInclude Include="Vendor\GLFW\include\glfw3.h" />
@@ -360,6 +468,40 @@
     <ClInclude Include="Vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\GTD\Game\ECS\Controllable.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Game\PC.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Game\TileMapE.cpp" />
+    <ClCompile Include="src\GTD\Game\ECS\Animated.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Game\ECS\EntityDirector.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Game\ECS\Drawable.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Game\ECS\Entity.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Game\SpriteE.cpp" />
+    <ClCompile Include="src\GTD\Renderer\IFrameBuffer.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Renderer\OpenGLFrameBuffer.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
     <ClCompile Include="src\GTD\Util\CSVLoader.cpp">
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
@@ -650,6 +792,9 @@
     <None Include="Vendor\glm\gtx\vector_query.inl" />
     <None Include="Vendor\glm\gtx\wrap.inl" />
   </ItemGroup>
+  <ItemGroup>
+    <Library Include="Vendor\freetype\lib\freetype.lib" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -702,7 +847,7 @@
       <PreprocessorDefinitions>GTD_PLATFORM_WINDOWS;GTD_BUILD_DLL;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>../PCH/PCH.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(SolutionDir)\GTD\Vendor\stb_image;$(SolutionDir)\GTD\Vendor\GLFW\include;$(SolutionDir)\GTD\Vendor\GLAD;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -727,7 +872,7 @@
       <PreprocessorDefinitions>GTD_PLATFORM_WINDOWS;GTD_BUILD_DLL;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>../PCH/PCH.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(SolutionDir)\GTD\Vendor\stb_image;$(SolutionDir)\GTD\Vendor\GLFW\include;$(SolutionDir)\GTD\Vendor\GLAD;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>

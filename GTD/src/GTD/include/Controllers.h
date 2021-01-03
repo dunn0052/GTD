@@ -19,7 +19,7 @@ namespace GTD
 		void SetCallBacks();
 		const std::vector<XboxController>& GetXboxControllers() const { return m_ControllerProps; };
 		const XboxController& GetXboxController(size_t ID) const { GTD_ASSERT(ID < MAX_NUM_CONTROLLERS, "Controller index out of range!"); return m_ControllerProps[ID]; }
-
+		const XboxController* GetXboxControllerP(size_t ID) const { GTD_ASSERT(ID < MAX_NUM_CONTROLLERS, "Controller index out of range!"); return &(m_ControllerProps[ID]); }
 		// all callbacks must be mirrored in the GLFWCallbackWrapper class
 		// and then set in SetCallbacks()
 		// I think ControllerConnectedEvent is literally the only gl controller callback... Well here's to if they decide to add more.

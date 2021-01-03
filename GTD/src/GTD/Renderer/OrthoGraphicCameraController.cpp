@@ -43,25 +43,35 @@ namespace GTD
 			
 				if (controller.m_buttons[GTD::ContextCode::UP])
 				{
-					m_CameraPosition.y += 10 * dt;
+					m_CameraPosition.y += m_CameraTranslationSpeed * dt;
 				}
 
 				if (controller.m_buttons[GTD::ContextCode::RIGHT])
 				{
-					m_CameraPosition.x += 10 * dt;
+					m_CameraPosition.x += m_CameraTranslationSpeed * dt;
 				}
-				m_CameraPosition.x += controller.m_axis[GTD::ContextAxis::RX];
-				m_CameraPosition.y -= controller.m_axis[GTD::ContextAxis::RY];
 
-				m_ZoomLevel -= controller.m_axis[GTD::ContextAxis::LX] * 0.01;
-				m_ZoomLevel += controller.m_axis[GTD::ContextAxis::LY] * 0.01;
+				if (controller.m_buttons[GTD::ContextCode::DOWN])
+				{
+					m_CameraPosition.y -= m_CameraTranslationSpeed * dt;
+				}
+
+				if (controller.m_buttons[GTD::ContextCode::LEFT])
+				{
+					m_CameraPosition.x -= m_CameraTranslationSpeed * dt;
+				}
+
+				m_CameraPosition.x += controller.m_axis[GTD::ContextAxis::RX] * dt;
+				m_CameraPosition.y -= controller.m_axis[GTD::ContextAxis::RY] * dt;
+
+				m_ZoomLevel -= controller.m_axis[GTD::ContextAxis::LX] * m_CameraTranslationSpeed;
+				m_ZoomLevel += controller.m_axis[GTD::ContextAxis::LY] * m_CameraTranslationSpeed;
 			}
 		}
 
 
-		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
-
-		m_Camera.SetPosition(m_CameraPosition);
+		//m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
+		//m_Camera.SetPosition(m_CameraPosition);
     }
 
 	void OrthographicCameraController::OnUpdate(Timestep& dt)
