@@ -1380,6 +1380,18 @@
     <ClInclude Include="src\GTD\Game\ECS\Callbacks.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\GTD\Game\TileE.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GTD\Game\TileLayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GTD\Game\ECS\Solid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GTD\Game\ECS\Movable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\GTD\App.cpp">
@@ -1512,6 +1524,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GTD\Game\PC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Game\TileE.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Game\TileLayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Game\ECS\Solid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Game\ECS\Movable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -42,6 +42,7 @@ namespace GTD
 		bool m_Minimized = false;
 		LayerStack m_LayerStack;
 		float m_LastFrameTime;
+		Ref<Timestep> m_DT;
 	};
 
 	// To be defined in client

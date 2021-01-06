@@ -10,7 +10,7 @@ class ExampleLayer : public GTD::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example"), m_CameraController(1280.f / 720.0f, true), m_Controllers()
+		: Layer("Example"), m_CameraController(1280.f / 720.0f, m_DT, true), m_Controllers()
 	{
 		m_VertexArray = GTD::IVertexArray::Create();
 
@@ -158,7 +158,7 @@ public:
 
 	}
 
-	void OnUpdate(GTD::Timestep dt) override
+	void OnUpdate(const GTD::Ref<GTD::Timestep>& dt) override
 	{
 
 

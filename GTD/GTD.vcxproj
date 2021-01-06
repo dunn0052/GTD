@@ -13,7 +13,11 @@
   <ItemGroup>
     <ClInclude Include="src\GTD\Game\ECS\Callbacks.h" />
     <ClInclude Include="src\GTD\Game\ECS\Controllable.h" />
+    <ClInclude Include="src\GTD\Game\ECS\Movable.h" />
+    <ClInclude Include="src\GTD\Game\ECS\Solid.h" />
     <ClInclude Include="src\GTD\Game\PC.h" />
+    <ClInclude Include="src\GTD\Game\TileE.h" />
+    <ClInclude Include="src\GTD\Game\TileLayer.h" />
     <ClInclude Include="src\GTD\Game\TileMapE.h" />
     <ClInclude Include="src\GTD\Game\ECS\Animated.h" />
     <ClInclude Include="src\GTD\Game\ECS\EntityDirector.h" />
@@ -472,10 +476,20 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../../PCH/PCH.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../../PCH/PCH.h</PrecompiledHeaderFile>
     </ClCompile>
+    <ClCompile Include="src\GTD\Game\ECS\Movable.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GTD\Game\ECS\Solid.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../../PCH/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../../PCH/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
     <ClCompile Include="src\GTD\Game\PC.cpp">
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
     </ClCompile>
+    <ClCompile Include="src\GTD\Game\TileE.cpp" />
+    <ClCompile Include="src\GTD\Game\TileLayer.cpp" />
     <ClCompile Include="src\GTD\Game\TileMapE.cpp" />
     <ClCompile Include="src\GTD\Game\ECS\Animated.cpp">
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../../PCH/PCH.h</PrecompiledHeaderFile>

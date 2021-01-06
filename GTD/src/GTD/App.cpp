@@ -10,6 +10,7 @@ namespace GTD
 
 		m_Window = WindowsWindow::Create();
 		m_Window->SetEventCallback(BIND_EVENT_FTN(App::OnEvent));
+		m_DT = CreateRef<Timestep>();
 
 		Renderer::Init();
 	}
@@ -40,7 +41,7 @@ namespace GTD
 		while (m_Running)
 		{
 			float time = (float)glfwGetTime(); // should be platform independent
-			Timestep dt = time - m_LastFrameTime;
+			m_DT->Set(time - m_LastFrameTime);
 			m_LastFrameTime = time;
 
 			if (!m_Minimized)
@@ -48,7 +49,7 @@ namespace GTD
 				/* do layer stuff here */
 				for (Layer* layer : m_LayerStack)
 				{
-					layer->OnUpdate(dt);
+					layer->OnUpdate(m_DT);
 				}
 				/* end layer stuff */
 			}
@@ -81,11 +82,13 @@ namespace GTD
 
 	void App::PushLayer(Layer* layer)
 	{
+		layer->SetTimestep(m_DT);
 		m_LayerStack.PushLayer(layer);
 	}
 
 	void App::PushOverlay(Layer* overlay)
 	{
+		overlay->SetTimestep(m_DT);
 		m_LayerStack.PushOverlay(overlay);
 	}
 

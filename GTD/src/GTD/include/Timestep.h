@@ -16,6 +16,7 @@ namespace GTD
 
 		float GetSecond() const { return m_Time; }
 		float GetMilliseconds() const { return m_Time * 1000.0f; };
+		void Set(float time) { m_Time = time; }
 
 	private:
 		float m_Time;

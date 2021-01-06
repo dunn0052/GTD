@@ -156,7 +156,7 @@ namespace GTD
 		s_Data.TextureSlotIndex = 1;
 	}
 
-	float Renderer2D::SubmitTexture(Ref<ITexture2D>& texture)
+	float Renderer2D::SubmitTexture(const Ref<ITexture2D>& texture)
 	{
 		float textureIndex = 0.0f;
 
