@@ -20,7 +20,7 @@ namespace GTD
 		// one of the few times I want to use non class enums
 		for(ContextCode button : XboxCode)
 		{
-			if (controller.m_buttons[button])
+			if (controller.m_CurrentButtons[button])
 			{
 				ss << XboxButtonMappings[button] << " ";
 			}
@@ -44,7 +44,7 @@ namespace GTD
 	static const unsigned char* nullCheckglfwGetJoystickButtons(XboxController& controller)
 	{
 		const unsigned char* ret = glfwGetJoystickButtons(controller.ID, &controller.m_numButtons);
-		return ret != NULL ? ret : controller.m_buttons;
+		return ret != NULL ? ret : controller.m_CurrentButtons;
 	}
 
 	void Controllers::OnUpdate()
@@ -58,9 +58,18 @@ namespace GTD
 				const unsigned char* buttons = glfwGetJoystickButtons(controller.ID, &controller.m_numButtons);
 				if (NULL != buttons)
 				{
-				memcpy(controller.m_buttons, 
-					buttons, 
-					controller.m_numButtons * sizeof(char));
+					// Get buttons pressed last time as held buttons
+					memcpy(controller.m_PreviousButtons,
+						controller.m_CurrentButtons,
+						controller.m_numButtons * sizeof(char));
+
+					// Get currently pressed buttons
+					memcpy(controller.m_CurrentButtons,
+						buttons,
+						controller.m_numButtons * sizeof(char));
+
+					for(size_t buttonIndex = 0; buttonIndex < controller.m_numButtons; buttonIndex++) 
+					{ controller.m_Buttons[buttonIndex].m_Status = controller.m_CurrentButtons[buttonIndex] << 1 | controller.m_PreviousButtons[buttonIndex]; }
 				}
 				else
 				{
@@ -82,7 +91,7 @@ namespace GTD
 				}
 
 #if GTD_DEBUG_MODE
-			debugXboxController(controller);
+			//debugXboxController(controller);
 #endif
 			}
 		}
@@ -101,7 +110,7 @@ namespace GTD
 	{
 		m_ControllerProps.resize(MAX_NUM_CONTROLLERS);
 
-		// add currently connected controllers
+		// Add any currently connected controllers
 		for (int i = 0; i < MAX_NUM_CONTROLLERS; i++)
 		{
 			if(GLFW_TRUE == glfwJoystickPresent(i))

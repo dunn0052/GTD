@@ -34,12 +34,12 @@ namespace GTD
 				if (m_Rotating)
 				{
 					// rotation
-					if (controller.m_buttons[GTD::ContextCode::LB])
+					if (controller.m_CurrentButtons[GTD::ContextCode::LB])
 					{
 						m_CameraRotation += -m_CameraRotationSpeed * m_DT->GetSecond();
 						m_Camera.SetRotation(m_CameraRotation);
 					}
-					if (controller.m_buttons[GTD::ContextCode::RB])
+					if (controller.m_CurrentButtons[GTD::ContextCode::RB])
 					{
 						m_CameraRotation += m_CameraRotationSpeed * m_DT->GetSecond();
 						m_Camera.SetRotation(m_CameraRotation);
@@ -48,22 +48,22 @@ namespace GTD
 				}
 
 			
-				if (controller.m_buttons[GTD::ContextCode::UP])
+				if (controller.m_CurrentButtons[GTD::ContextCode::UP])
 				{
 					m_CameraPosition.y += m_CameraTranslationSpeed * m_DT->GetSecond();
 				}
 
-				if (controller.m_buttons[GTD::ContextCode::RIGHT])
+				if (controller.m_CurrentButtons[GTD::ContextCode::RIGHT])
 				{
 					m_CameraPosition.x += m_CameraTranslationSpeed * m_DT->GetSecond();
 				}
 
-				if (controller.m_buttons[GTD::ContextCode::DOWN])
+				if (controller.m_CurrentButtons[GTD::ContextCode::DOWN])
 				{
 					m_CameraPosition.y -= m_CameraTranslationSpeed * m_DT->GetSecond();
 				}
 
-				if (controller.m_buttons[GTD::ContextCode::LEFT])
+				if (controller.m_CurrentButtons[GTD::ContextCode::LEFT])
 				{
 					m_CameraPosition.x -= m_CameraTranslationSpeed * m_DT->GetSecond();
 				}

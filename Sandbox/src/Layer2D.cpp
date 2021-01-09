@@ -3,7 +3,7 @@
 
 
 Layer2D::Layer2D()
-	: Layer("2D"), m_Controllers(), m_Color({0.8f, 0.2f, 0.5f, 1.0f}), u_Color("u_Color")
+	: Layer("2D"), m_Controllers(), m_Color({1.0f, 1.0f, 1.0f, 1.0f}), u_Color("u_Color")
 {
 }
 
@@ -41,12 +41,14 @@ void Layer2D::OnAttach()
 		nullptr,
 		m_DT,
 		0,
-		m_Controllers.GetXboxControllerP(0)
+		m_Controllers.GetXboxControllerP(0),
+		5.0f,
+		glm::vec3{0.0f, 0.0f, 0.0f}
 	};
 
 	m_PC = m_Director->Create(pcParms);
 
-	m_Color = { 0.5f, 0.0f, 0.8f, 0.8f };
+	//m_Color = { 0.5f, 0.0f, 0.8f, 0.8f };
 
 	GTD::TileLayerProps tileLayerProps = {};
 	tileLayerProps.DT = m_DT;
@@ -67,6 +69,7 @@ void Layer2D::OnAttach()
 
 	m_Sprite = GTD::CreateRef<GTD::Sprite>(m_SpriteSheet->GetTile(141), m_Quad);
 
+	/*
 	m_PC->AddAction(GTD::ContextCode::UP, [](const GTD::ControlCallbackParams& param) 
 		{ 
 			GTD::PC* pc = (GTD::PC*)param.object; 
@@ -78,10 +81,135 @@ void Layer2D::OnAttach()
 			}
 		});
 	m_PC->AddAction(GTD::ContextCode::DOWN, [](const GTD::ControlCallbackParams& param) { GTD::PC* pc = (GTD::PC*)param.object; pc->Move({ 0.0f, -1.0f, 0.0f }); });
-	m_PC->AddAction(GTD::ContextCode::LEFT, [](const GTD::ControlCallbackParams& param) { GTD::PC* pc = (GTD::PC*)param.object; pc->Move({ -1.0f, 0.0f, 0.0f }); });
+	m_PC->AddAction(GTD::ContextCode::LEFT, [](const GTD::ControlCallbackParams& param) { GTD::PC* pc = (GTD::PC*)param.object; pc->ChangeDirection({ -1.0f, 0.0f, 0.0f }); pc->ChangeSpeed(7.0f); });
 	m_PC->AddAction(GTD::ContextCode::RIGHT, [](const GTD::ControlCallbackParams& param) { GTD::PC* pc = (GTD::PC*)param.object; pc->Move({ 1.0f, 0.0f, 0.0f }); });
 	m_PC->AddAction(GTD::ContextCode::LT, [](const GTD::ControlCallbackParams& param) { GTD::PC* pc = (GTD::PC*)param.object; pc->NextFrame(); });
 	m_PC->AddAction(GTD::ContextCode::RT, [](const GTD::ControlCallbackParams& param) { GTD::PC* pc = (GTD::PC*)param.object; pc->Kill(); });
+	*/
+
+	m_PC->SetAction
+	(
+		GTD::ContextCode::UP,
+
+		[](const GTD::ControlCallbackParams& params, unsigned char buttonStatus)
+		{
+			GTD::PC* ent = (GTD::PC*)params.object;
+			switch (buttonStatus)
+			{
+			case GTD::BUTTON_HELD:
+			{
+				std::cout << "BUTTON STATUS HELD: " << buttonStatus << std::endl;
+				return;
+			}
+			case GTD::BUTTON_PRESSED:
+			{
+				std::cout << "BUTTON STATUS PRESSED: " << buttonStatus << std::endl;
+				ent->ChangYDirection(1.0f);
+				return;
+			}
+			case GTD::BUTTON_RELEASED:
+			{
+				std::cout << "BUTTON STATUS RELEASED: " << buttonStatus << std::endl;
+				ent->ChangYDirection(0.0f);
+				return;
+			}
+			}
+			// use params and buttonStatus to your heart's content here
+		}
+	);
+
+	m_PC->SetAction
+	(
+		GTD::ContextCode::DOWN,
+
+		[](const GTD::ControlCallbackParams& params, unsigned char buttonStatus)
+		{
+			GTD::PC* ent = (GTD::PC*)params.object;
+			switch (buttonStatus)
+			{
+			case GTD::BUTTON_HELD:
+			{
+				std::cout << "BUTTON STATUS HELD: " << buttonStatus << std::endl;
+				return;
+			}
+			case GTD::BUTTON_PRESSED:
+			{
+				std::cout << "BUTTON STATUS PRESSED: " << buttonStatus << std::endl;
+				ent->ChangYDirection(-1.0f);
+				return;
+			}
+			case GTD::BUTTON_RELEASED:
+			{
+				std::cout << "BUTTON STATUS RELEASED: " << buttonStatus << std::endl;
+				ent->ChangYDirection(0.0f);
+				return;
+			}
+			}
+			// use params and buttonStatus to your heart's content here
+		}
+	);
+
+	m_PC->SetAction
+	(
+		GTD::ContextCode::LEFT,
+
+		[](const GTD::ControlCallbackParams& params, unsigned char buttonStatus)
+		{
+			GTD::PC* ent = (GTD::PC*)params.object;
+			switch (buttonStatus)
+			{
+			case GTD::BUTTON_HELD:
+			{
+				std::cout << "BUTTON STATUS HELD: " << buttonStatus << std::endl;
+				return;
+			}
+			case GTD::BUTTON_PRESSED:
+			{
+				std::cout << "BUTTON STATUS PRESSED: " << buttonStatus << std::endl;
+				ent->ChangXDirection(-1.0f);
+				return;
+			}
+			case GTD::BUTTON_RELEASED:
+			{
+				std::cout << "BUTTON STATUS RELEASED: " << buttonStatus << std::endl;
+				ent->ChangXDirection(0.0f);
+				return;
+			}
+			}
+			// use params and buttonStatus to your heart's content here
+		}
+	);
+
+	m_PC->SetAction
+	(
+		GTD::ContextCode::RIGHT,
+
+		[](const GTD::ControlCallbackParams& params, unsigned char buttonStatus)
+		{
+			GTD::PC* ent = (GTD::PC*)params.object;
+			switch (buttonStatus)
+			{
+			case GTD::BUTTON_HELD:
+			{
+				std::cout << "BUTTON STATUS HELD: " << buttonStatus << std::endl;
+				return;
+			}
+			case GTD::BUTTON_PRESSED:
+			{
+				std::cout << "BUTTON STATUS PRESSED: " << buttonStatus << std::endl;
+				ent->ChangXDirection(1.0f);
+				return;
+			}
+			case GTD::BUTTON_RELEASED:
+			{
+				std::cout << "BUTTON STATUS RELEASED: " << buttonStatus << std::endl;
+				ent->ChangXDirection(0.0f);
+				return;
+			}
+			}
+			// use params and buttonStatus to your heart's content here
+		}
+	);
 }
 
 void Layer2D::OnUpdate(const GTD::Ref<GTD::Timestep>& dt)
@@ -97,14 +225,14 @@ void Layer2D::OnUpdate(const GTD::Ref<GTD::Timestep>& dt)
 
 	GTD::Renderer2D::BeginScene(m_CameraController.GetCamera());
 	
-	if (controller.m_buttons[GTD::ContextCode::A])
+	if (controller.m_CurrentButtons[GTD::ContextCode::A])
 	{
-		m_Color = m_Color - glm::vec4{0.0f, -0.01f, 0.001f, 0.0f};
+		m_Color = m_Color - glm::vec4{0.0f, -0.01f, 0.001f, -0.01f};
 		m_TileLayer->SetTint(m_Color);
 	}
-	else if (controller.m_buttons[GTD::ContextCode::B])
+	else if (controller.m_CurrentButtons[GTD::ContextCode::B])
 	{
-		m_Color = m_Color - glm::vec4{ 0.0f, 0.01f, -0.001f, 0.0f };
+		m_Color = m_Color - glm::vec4{ 0.0f, 0.01f, -0.001f, 0.01f };
 		m_TileLayer->SetTint(m_Color);
 	}
 	m_Director->Update();

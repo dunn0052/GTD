@@ -53,6 +53,6 @@ namespace GTD
         static const HANDLE console;
 
         // thread guard
-        std::mutex mMutex;
+        //std::mutex mMutex;
     };
 }
