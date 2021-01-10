@@ -6,14 +6,14 @@
 
 namespace GTD
 {
-	class GTD_API ShaderLibrary
+	class ShaderLibrary
 	{
 	public:
-		void Add(const Ref<IShader>& shader);
-		void Add(const std::string& name, const Ref<IShader>& shader);
-		Ref<IShader> Load(const std::string& name, const std::string& filePath);
-		Ref<IShader> Load(const std::string& filePath);
-		Ref<IShader> Get(const std::string& filePath);
+		GTD_API void Add(const Ref<IShader>& shader);
+		GTD_API void Add(const std::string& name, const Ref<IShader>& shader);
+		GTD_API Ref<IShader> Load(const std::string& name, const std::string& filePath);
+		GTD_API Ref<IShader> Load(const std::string& filePath);
+		GTD_API Ref<IShader> Get(const std::string& filePath);
 
 	private:
 		std::unordered_map < std::string, Ref<IShader>> m_Shaders;

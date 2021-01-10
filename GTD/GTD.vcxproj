@@ -26,6 +26,7 @@
     <ClInclude Include="src\GTD\Game\ECS\IComponent.h" />
     <ClInclude Include="src\GTD\Game\SpriteE.h" />
     <ClInclude Include="src\GTD\Game\TIle.h" />
+    <ClInclude Include="src\GTD\include\Rectangle.h" />
     <ClInclude Include="src\GTD\Renderer\IFrameBuffer.h" />
     <ClInclude Include="src\GTD\Renderer\OpenGLFrameBuffer.h" />
     <ClInclude Include="src\GTD\Util\CSVLoader.h" />

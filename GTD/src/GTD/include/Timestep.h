@@ -18,6 +18,8 @@ namespace GTD
 		float GetMilliseconds() const { return m_Time * 1000.0f; };
 		void Set(float time) { m_Time = time; }
 
+		float GetTime() { return 0.0f; } // glfwGetTime() instead of 0.0f, but should be platform independent
+
 	private:
 		float m_Time;
 	};

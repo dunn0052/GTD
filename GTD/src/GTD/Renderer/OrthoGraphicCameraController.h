@@ -8,7 +8,7 @@
 
 namespace GTD
 {
-	struct GTD_API OrthographicCameraControllerProps
+	struct OrthographicCameraControllerProps
 	{
 		float aspectRatio;
 		Ref<Timestep> dt;
@@ -20,18 +20,20 @@ namespace GTD
 		float zoomLevel;
 	};
 
-	class GTD_API OrthographicCameraController
+	class OrthographicCameraController
 	{
 public:
-	OrthographicCameraController(float aspectRation, const Ref<Timestep>& dt, bool rotation = false); // zoom level 1.0, aspectratio * 2 units
-	OrthographicCameraController(const OrthographicCameraControllerProps& props);
-	OrthographicCameraController();
+	GTD_API OrthographicCameraController(float aspectRation, const Ref<Timestep>& dt, bool rotation = false); // zoom level 1.0, aspectratio * 2 units
+	GTD_API OrthographicCameraController(const OrthographicCameraControllerProps& props);
+	GTD_API OrthographicCameraController();
 
-	void OnUpdate(Controllers& controllers);
-	void OnUpdate();
-	void OnEvent(Event& e);
-	OrthographicCamera& GetCamera() { return m_Camera; }
-	const OrthographicCamera& GetCamera() const { return m_Camera; }
+	GTD_API void OnUpdate(Controllers& controllers);
+	GTD_API void OnUpdate();
+	GTD_API void OnEvent(Event& e);
+	GTD_API OrthographicCamera& GetCamera() { return m_Camera; }
+	GTD_API const OrthographicCamera& GetCamera() const { return m_Camera; }
+
+	GTD_API void SetCameraPosition(const glm::vec3& position) { m_Camera.SetPosition(position); }
 
 private:
 	void CalculateView();

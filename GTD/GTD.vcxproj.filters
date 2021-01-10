@@ -1392,6 +1392,9 @@
     <ClInclude Include="src\GTD\Game\ECS\Movable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\GTD\include\Rectangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\GTD\App.cpp">

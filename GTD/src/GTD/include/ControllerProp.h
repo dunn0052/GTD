@@ -21,7 +21,7 @@ namespace GTD
 		{
 			/*
 			Set button status 
-			OFF = 0x0, // !current & ~previous
+			OFF = 0x0, // ~current & ~previous
 			RELEASED = 0x1, // ~current & previous
 			PRESSED = 0x2, // current & ~previous
 			HELD = 0x3 // current & previous

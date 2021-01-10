@@ -9,38 +9,38 @@
 
 namespace GTD
 {
-	class GTD_API Renderer2D
+	class Renderer2D
 	{
 	public:
-		static void Init();
-		static void Shudtown();
+		GTD_API static void Init();
+		GTD_API static void Shudtown();
 
-		static void BeginScene(const OrthographicCamera camera);
-		static void EndScene();
-		static void Flush();
+		GTD_API static void BeginScene(const OrthographicCamera camera);
+		GTD_API static void EndScene();
+		GTD_API static void Flush();
 
-		static void ResetBatch();
+		GTD_API static void ResetBatch();
 
-		static float SubmitTexture(const Ref<ITexture2D>& texture);
+		GTD_API static float SubmitTexture(const Ref<ITexture2D>& texture);
 
 		// Primatives
-		static void DrawQuad(const glm::vec2& position, const glm::vec2& size, const glm::vec4& color);
-		static void DrawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color);
+		GTD_API static void DrawQuad(const glm::vec2& position, const glm::vec2& size, const glm::vec4& color);
+		GTD_API static void DrawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color);
 
-		static void DrawQuad(const Ref<Quad>& quad);
-		static void DrawQuad(const Ref<Sprite>& sprite);
-		static void DrawQuad(const Tile& tile, const Ref<SpriteSheet> spriteSheet);
-		static void DrawQuad(const Ref<TileMap>& tileMap);
+		GTD_API static void DrawQuad(const Ref<Quad>& quad);
+		GTD_API static void DrawQuad(const Ref<Sprite>& sprite);
+		GTD_API static void DrawQuad(const Tile& tile, const Ref<SpriteSheet> spriteSheet);
+		GTD_API static void DrawQuad(const Ref<TileMap>& tileMap);
 
-		static void DrawQuad(const glm::vec2& position, const glm::vec2& size, const Ref<ITexture2D>& texture);
-		static void DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<ITexture2D>& texture);
+		GTD_API static void DrawQuad(const glm::vec2& position, const glm::vec2& size, const Ref<ITexture2D>& texture);
+		GTD_API static void DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<ITexture2D>& texture);
 		
-		static void DrawQuad(const glm::vec2& position, const glm::vec2& size, const Ref<ITexture2D>& texture, const glm::vec4& color);
-		static void DrawQuad(const glm::vec3& position, const glm::vec2& size,const Ref<ITexture2D>& texture, const glm::vec4& color, const glm::vec2 textureCoords[4]);
+		GTD_API static void DrawQuad(const glm::vec2& position, const glm::vec2& size, const Ref<ITexture2D>& texture, const glm::vec4& color);
+		GTD_API static void DrawQuad(const glm::vec3& position, const glm::vec2& size,const Ref<ITexture2D>& texture, const glm::vec4& color, const glm::vec2 textureCoords[4]);
 
-		static void DrawRotatedQuad(const glm::vec3& position, const glm::vec2& size, const Ref<ITexture2D>& texture, const glm::vec4& color, const float rotation = 0.0f);
+		GTD_API static void DrawRotatedQuad(const glm::vec3& position, const glm::vec2& size, const Ref<ITexture2D>& texture, const glm::vec4& color, const float rotation = 0.0f);
 
-		static void Draw(const Animated& animated, float textureIndex);
+		GTD_API static void Draw(const Animated& animated, float textureIndex);
 
 	private:
 		static const std::string u_ViewProjection;

@@ -7,23 +7,23 @@
 
 namespace GTD {
 
-	class GTD_API WindowsWindow : public IWindow
+	class WindowsWindow : public IWindow
 	{
 	public:
-		WindowsWindow(const WindowProps& props);
-		virtual ~WindowsWindow();
+		GTD_API WindowsWindow(const WindowProps& props);
+		GTD_API virtual ~WindowsWindow();
 
-		void OnUpdate() override;
+		GTD_API void OnUpdate() override;
 
-		unsigned int GetWidth() const override { return m_Data.Width; }
-		unsigned int GetHeight() const override { return m_Data.Height; }
+		GTD_API unsigned int GetWidth() const override { return m_Data.Width; }
+		GTD_API unsigned int GetHeight() const override { return m_Data.Height; }
 
 		// Window attributes
-		void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
-		void SetVSync(bool enabled) override;
-		bool IsVSync() const override;
+		GTD_API void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
+		GTD_API void SetVSync(bool enabled) override;
+		GTD_API bool IsVSync() const override;
 
-		virtual void* GetNativeWindow() const { return m_Window; }
+		GTD_API virtual void* GetNativeWindow() const { return m_Window; }
 	private:
 		virtual void Init(const WindowProps& props);
 		virtual void Shutdown();

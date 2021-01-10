@@ -33,7 +33,7 @@ namespace GTD
 		return 0;
 	};
 
-	struct GTD_API BufferElement
+	struct BufferElement
 	{
 		std::string Name; // In theory the name is not needed, but only used to help reference variables in shaders
 		ShaderDataType Type;
@@ -41,15 +41,15 @@ namespace GTD
 		uint32_t Size;
 		bool Normalized;
 
-		BufferElement() : Name(""), Type(ShaderDataType::None), Offset(0), Size(0), Normalized(false) {}
+		GTD_API BufferElement() : Name(""), Type(ShaderDataType::None), Offset(0), Size(0), Normalized(false) {}
 
-		BufferElement(ShaderDataType type, const std::string& name, bool normalized = false)
+		GTD_API BufferElement(ShaderDataType type, const std::string& name, bool normalized = false)
 			: Name(name), Type(type), Size(ShaderDataTypeSize(type)), Offset(0), Normalized(normalized)
 		{
 
 		}
 
-		uint32_t GetComponentCount() const
+		GTD_API uint32_t GetComponentCount() const
 		{
 			switch (Type)
 			{

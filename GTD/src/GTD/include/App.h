@@ -19,19 +19,20 @@
 namespace GTD
 {
 
-	class GTD_API App
+	class App
 	{
 	public:
-		App();
+		GTD_API App();
 
-		virtual ~App();
+		GTD_API virtual ~App();
 		
-		void Run();
+		GTD_API void Run();
 
-		void OnEvent(Event& e);
+		GTD_API void OnEvent(Event& e);
 
-		void PushLayer(Layer* layer);
-		void PushOverlay(Layer* layer);
+		GTD_API void PushLayer(Layer* layer);
+		GTD_API void PushOverlay(Layer* layer);
+
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnWindowResize(WindowResizeEvent& e);

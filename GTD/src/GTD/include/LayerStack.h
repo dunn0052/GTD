@@ -6,19 +6,19 @@
 
 namespace GTD
 {
-	class GTD_API LayerStack
+	class LayerStack
 	{
 	public:
-		LayerStack();
-		~LayerStack();
+		GTD_API LayerStack();
+		GTD_API ~LayerStack();
 
-		void PushLayer(Layer* layer);
-		void PushOverlay(Layer* overlay);
-		void PopLayer(Layer* layer);
-		void PopOverlay(Layer* layer);
+		GTD_API void PushLayer(Layer* layer);
+		GTD_API void PushOverlay(Layer* overlay);
+		GTD_API void PopLayer(Layer* layer);
+		GTD_API void PopOverlay(Layer* layer);
 
-		std::vector<Layer*>::iterator begin() { return m_Layers.begin(); }
-		std::vector<Layer*>::iterator end() { return m_Layers.end(); }
+		GTD_API std::vector<Layer*>::iterator begin() { return m_Layers.begin(); }
+		GTD_API std::vector<Layer*>::iterator end() { return m_Layers.end(); }
 	private:
 
 		// IF we have a static number of layers we can make this an array with the actual layers instead of pointers 

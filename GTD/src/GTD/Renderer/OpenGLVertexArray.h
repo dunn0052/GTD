@@ -3,19 +3,19 @@
 
 namespace GTD
 {
-	class GTD_API OpenGLVertexArray : public IVertexArray
+	class OpenGLVertexArray : public IVertexArray
 	{
 	public:
-		OpenGLVertexArray();
-		~OpenGLVertexArray();
+		GTD_API OpenGLVertexArray();
+		GTD_API ~OpenGLVertexArray();
 
-		virtual void Bind()  const override;
-		virtual void Unbind() const override;
+		GTD_API virtual void Bind()  const override;
+		GTD_API virtual void Unbind() const override;
 
-		virtual void AddVertexBuffer(const Ref<IVertexBuffer>& vertexBuffer) override;
-		virtual void AddIndexBuffer(const Ref<IIndexBuffer>& indexBuffer) override;
-		virtual std::vector<Ref<IVertexBuffer>> GetVertexBuffer() const { return m_VertexBuffers; };
-		virtual Ref<IIndexBuffer> GetIndexBuffer() const { return m_IndexBuffer; };
+		GTD_API virtual void AddVertexBuffer(const Ref<IVertexBuffer>& vertexBuffer) override;
+		GTD_API virtual void AddIndexBuffer(const Ref<IIndexBuffer>& indexBuffer) override;
+		GTD_API virtual std::vector<Ref<IVertexBuffer>> GetVertexBuffer() const { return m_VertexBuffers; };
+		GTD_API virtual Ref<IIndexBuffer> GetIndexBuffer() const { return m_IndexBuffer; };
 
 	private:
 		std::vector<Ref<IVertexBuffer>> m_VertexBuffers;

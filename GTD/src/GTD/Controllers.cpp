@@ -3,6 +3,8 @@
 
 namespace GTD
 {
+
+	/* This should be considered OpenGL only code -- need to mkae platform independet interface */
 	Controllers::Controllers()
 	{
 		Init();
@@ -68,6 +70,12 @@ namespace GTD
 						buttons,
 						controller.m_numButtons * sizeof(char));
 
+					/*  Set button status 
+						OFF = 0x0  ~current & ~previous
+						RELEASED = 0x1 ~current & previous
+						PRESSED = 0x2 current & ~previous
+						HELD = 0x3 current & previous
+					*/
 					for(size_t buttonIndex = 0; buttonIndex < controller.m_numButtons; buttonIndex++) 
 					{ controller.m_Buttons[buttonIndex].m_Status = controller.m_CurrentButtons[buttonIndex] << 1 | controller.m_PreviousButtons[buttonIndex]; }
 				}

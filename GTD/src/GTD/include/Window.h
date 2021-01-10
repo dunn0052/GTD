@@ -20,27 +20,27 @@ namespace GTD {
 	};
 
 	// Interface representing a desktop system based Window
-	class GTD_API IWindow
+	class IWindow
 	{
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;
 
-		virtual ~IWindow() = default;
+		GTD_API virtual ~IWindow() = default;
 
-		virtual void OnUpdate() = 0;
+		GTD_API virtual void OnUpdate() = 0;
 
-		virtual uint32_t GetWidth() const = 0;
-		virtual uint32_t GetHeight() const = 0;
+		GTD_API virtual uint32_t GetWidth() const = 0;
+		GTD_API virtual uint32_t GetHeight() const = 0;
 
 		// Window attributes
-		virtual void SetEventCallback(const EventCallbackFn& callback) = 0;
-		virtual void SetVSync(bool enabled) = 0;
-		virtual bool IsVSync() const = 0;
+		GTD_API virtual void SetEventCallback(const EventCallbackFn& callback) = 0;
+		GTD_API virtual void SetVSync(bool enabled) = 0;
+		GTD_API virtual bool IsVSync() const = 0;
 
-		virtual void* GetNativeWindow() const = 0;
+		GTD_API virtual void* GetNativeWindow() const = 0;
 
-		static std::unique_ptr<IWindow> Create(const WindowProps& props = WindowProps());
-		//static Scope<Window> Create(const WindowProps& props = WindowProps());
+		GTD_API static std::unique_ptr<IWindow> Create(const WindowProps& props = WindowProps());
+		//GTD_API static Scope<Window> Create(const WindowProps& props = WindowProps());
 	};
 
 }

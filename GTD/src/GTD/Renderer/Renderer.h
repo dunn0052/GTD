@@ -5,18 +5,18 @@
 
 namespace GTD
 {
-	class GTD_API Renderer
+	class Renderer
 	{
 	public:
-		static void Init();
-		static void OnWindowResize(uint32_t width, uint32_t height);
+		GTD_API static void Init();
+		GTD_API static void OnWindowResize(uint32_t width, uint32_t height);
 
-		static void BeginScene(OrthographicCamera& camera); // kind of want to call this begin frame instead
-		static void EndScene(); // end frame here as well
-		static void Submit(const Ref<IShader>& shader, const Ref<IVertexArray>& vertexArray, const glm::mat4& transform = glm::mat4(1.0f)); // will take in a ref to a mesh
-		static void Flush();
+		GTD_API static void BeginScene(OrthographicCamera& camera); // kind of want to call this begin frame instead
+		GTD_API static void EndScene(); // end frame here as well
+		GTD_API static void Submit(const Ref<IShader>& shader, const Ref<IVertexArray>& vertexArray, const glm::mat4& transform = glm::mat4(1.0f)); // will take in a ref to a mesh
+		GTD_API static void Flush();
 
-		static inline IRendererAPI::API GetAPI() { return IRendererAPI::GetAPI(); }
+		GTD_API static inline IRendererAPI::API GetAPI() { return IRendererAPI::GetAPI(); }
 
 	private:
 		struct SceneData

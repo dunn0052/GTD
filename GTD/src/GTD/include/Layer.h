@@ -10,20 +10,20 @@
 
 namespace GTD
 {
-	class GTD_API Layer
+	class Layer
 	{
 	public:
-		Layer(const std::string& name = "Layer");
-		virtual ~Layer();
+		GTD_API Layer(const std::string& name = "Layer");
+		GTD_API virtual ~Layer();
 
-		virtual void OnAttach() {}
-		virtual void OnDetach() {}
-		virtual void OnUpdate(const Ref<Timestep>& dt) {}
-		virtual void OnEvent(Event& e) {}
+		GTD_API virtual void OnAttach() {}
+		GTD_API virtual void OnDetach() {}
+		GTD_API virtual void OnUpdate(const Ref<Timestep>& dt) {}
+		GTD_API virtual void OnEvent(Event& e) {}
 
-		inline const std::string& const GetName() { return m_DebugName; }
-		inline const uint16_t const GetID() { return m_ID;  }
-		inline void SetTimestep(const Ref<Timestep>& dt) { m_DT = dt; }
+		GTD_API inline const std::string& GetName() { return m_DebugName; }
+		GTD_API inline const uint16_t GetID() { return m_ID;  }
+		GTD_API inline void SetTimestep(const Ref<Timestep>& dt) { m_DT = dt; }
 
 	protected:
 		uint16_t m_ID;

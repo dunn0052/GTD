@@ -8,22 +8,22 @@ namespace GTD
 	static const char MAX_NUM_CONTROLLERS = 16; //GLFW_JOYSTICK_LAST + 1;
 
 	// should be IControllers
-	class GTD_API Controllers
+	class Controllers
 	{
 	public:
 		
-		Controllers();
-		~Controllers();
+		GTD_API Controllers();
+		GTD_API ~Controllers();
 
-		void OnUpdate();
-		void SetCallBacks();
-		const std::vector<XboxController>& GetXboxControllers() const { return m_ControllerProps; };
-		const XboxController& GetXboxController(size_t ID) const { GTD_ASSERT(ID < MAX_NUM_CONTROLLERS, "Controller index out of range!"); return m_ControllerProps[ID]; }
-		const XboxController* GetXboxControllerP(size_t ID) const { GTD_ASSERT(ID < MAX_NUM_CONTROLLERS, "Controller index out of range!"); return &(m_ControllerProps[ID]); }
+		GTD_API void OnUpdate();
+		GTD_API void SetCallBacks();
+		GTD_API const std::vector<XboxController>& GetXboxControllers() const { return m_ControllerProps; };
+		GTD_API const XboxController& GetXboxController(size_t ID) const { GTD_ASSERT(ID < MAX_NUM_CONTROLLERS, "Controller index out of range!"); return m_ControllerProps[ID]; }
+		GTD_API const XboxController* GetXboxControllerP(size_t ID) const { GTD_ASSERT(ID < MAX_NUM_CONTROLLERS, "Controller index out of range!"); return &(m_ControllerProps[ID]); }
 		// all callbacks must be mirrored in the GLFWCallbackWrapper class
 		// and then set in SetCallbacks()
 		// I think ControllerConnectedEvent is literally the only gl controller callback... Well here's to if they decide to add more.
-		void ControllerConnectionEvent(int joypadID, int joypadCon);
+		GTD_API void ControllerConnectionEvent(int joypadID, int joypadCon);
 
 	private:
 		void Init();
