@@ -37,19 +37,19 @@ namespace GTD
 
 #define EVENT_CLASS_CATEGORY( CATEGORY ) virtual int GetCategoryFlags() const override { return CATEGORY; }
 
-	class GTD_API Event
+	class Event
 	{
 	public:
-		virtual ~Event() = default;
+		GTD_API virtual ~Event() = default;
 
 		bool Handled = false;
 
-		virtual EventType GetEventType() const = 0;
-		virtual const char* GetName() const = 0;
-		virtual int GetCategoryFlags() const = 0;
-		virtual std::string ToString() const { return GetName(); }
+		GTD_API virtual EventType GetEventType() const = 0;
+		GTD_API virtual const char* GetName() const = 0;
+		GTD_API virtual int GetCategoryFlags() const = 0;
+		GTD_API virtual std::string ToString() const { return GetName(); }
 
-		bool IsInCategory(EventCategory category)
+		GTD_API bool IsInCategory(EventCategory category)
 		{
 			return GetCategoryFlags() & category;
 		}

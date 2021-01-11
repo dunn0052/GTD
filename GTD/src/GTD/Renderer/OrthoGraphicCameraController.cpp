@@ -93,18 +93,12 @@ namespace GTD
 		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FTN(OrthographicCameraController::OnWindowResize));
     }
 
-	void OrthographicCameraController::CalculateView()
-	{
-		// TODO calculate view
-		//m_Bounds = { -m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel };
-		//m_Camera.SetProjection(m_Bounds.Left, m_Bounds.Right, m_Bounds.Bottome, m_Bounds.Top);
-	}
-
 	bool OrthographicCameraController::OnMouseScrolled(MouseScrolledEvent& e)
     {
-		m_ZoomLevel = Clamp<float>(m_ZoomLevel - e.GetYOffset(), m_LowerZoomBound, m_UpperZoomBound);
+		m_ZoomLevel -= e.GetYOffset() * 0.25f;
+		m_ZoomLevel = m_ZoomLevel > 0.25 ? m_ZoomLevel : 0.25;
 		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
-		//CalculateView();
+		LOG_DEBUG("ZOOM LEVEL %f", m_ZoomLevel);
         return false;
     }
 
@@ -112,7 +106,6 @@ namespace GTD
     {
 		m_AspectRatio = (float)e.GetWidth() / (float)e.GetHeight();
 		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
-		//CalculateView();
         return false;
     }
 }

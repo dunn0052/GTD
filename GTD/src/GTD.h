@@ -17,6 +17,7 @@
 #include "GTD/include/Controllers.h"
 #include "GTD/include/ContextCodes.h"
 #include "GTD/include/Rect.h"
+#include "GTD/include/Rectangle.h"
 
 #include "GTD/Renderer/RenderCommands.h"
 #include "GTD/Renderer/Renderer.h"

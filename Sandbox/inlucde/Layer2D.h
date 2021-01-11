@@ -13,6 +13,10 @@ public:
 	virtual void OnAttach() override; // similar to a constructor, but layer stack can do it
 	virtual void OnDetach() override;
 
+	bool OnMouseDown(GTD::MouseButtonPressedEvent& e);
+	bool OnMouseMove(GTD::MouseMovedEvent& e);
+	bool OnWindowResize(GTD::WindowResizeEvent& e);
+
 private:
 	GTD::OrthographicCameraController m_CameraController;
 	GTD::Controllers m_Controllers;
@@ -27,7 +31,10 @@ private:
 	GTD::Ref<GTD::SpriteE> m_EntitySprite;
 	GTD::Ref<GTD::PC> m_PC;
 
+	std::vector<GTD::Ref<GTD::Rect>> m_RectCollisions;
+	GTD::Ref<GTD::Rect> m_CollisionRect;
+	glm::vec2 m_WindowSize;
+
 	glm::vec4 m_Color;
-	const std::string u_Color;
 	GTD::Ref<GTD::Quad> m_Quad;
 };

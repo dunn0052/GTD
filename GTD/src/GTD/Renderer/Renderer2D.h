@@ -2,6 +2,7 @@
 #include "OrthographicCamera.h"
 #include "ITexture.h"
 #include "../include/Rect.h"
+#include "../include/Rectangle.h"
 #include "../Game/Sprite.h"
 #include "../Game/TIle.h"
 #include "../Game/TIleMap.h"
@@ -42,6 +43,7 @@ namespace GTD
 
 		GTD_API static void Draw(const Animated& animated, float textureIndex);
 
+		GTD_API static void Draw(const Ref<Rect>& rect, const glm::vec4& color);
 	private:
 		static const std::string u_ViewProjection;
 		static const std::string u_Transform;

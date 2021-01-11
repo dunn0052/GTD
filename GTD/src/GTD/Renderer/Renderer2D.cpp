@@ -19,7 +19,6 @@ namespace GTD
 		{0.0f, 1.0f}
 	};
 
-
 	struct QuadVertex
 	{
 		glm::vec3 Position;
@@ -124,7 +123,6 @@ namespace GTD
 	{
 		s_Data.ComboShader->Bind();
 		s_Data.ComboShader->Set(u_ViewProjection, camera.GetViewProjectionMatrix());
-
 		ResetBatch();
 	}
 
@@ -284,7 +282,7 @@ namespace GTD
 		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * 
 			glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
 
-		s_Data.ComboShader->Set(u_Transform, transform);
+		s_Data.ComboShader->Set(u_Transform, glm::mat4(1.0f));//transform);
 	}
 
 	// Most of the time don't care about rotation, but is possible here
@@ -337,5 +335,9 @@ namespace GTD
 
 		s_Data.ComboShader->Set(u_Transform, transform);
 		*/
+	}
+	GTD_API void Renderer2D::Draw(const Ref<Rect>& rect, const glm::vec4& color)
+	{
+		DrawQuad(rect->Position(), rect->Size(), color);
 	}
 }

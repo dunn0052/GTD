@@ -35,8 +35,8 @@ public:
 
 	GTD_API void SetCameraPosition(const glm::vec3& position) { m_Camera.SetPosition(position); }
 
+	GTD_API const float GetZoomLevel() const { return m_ZoomLevel; }
 private:
-	void CalculateView();
 
 	bool OnMouseScrolled(MouseScrolledEvent& e);
 	bool OnWindowResize(WindowResizeEvent& e);
@@ -55,7 +55,7 @@ private:
 
 	glm::vec3 m_CameraPosition = { 0.0f, 0.0f, 0.0f };
 	float m_CameraRotation = 0.0f;
-	float m_CameraTranslationSpeed = 1.0f;
+	float m_CameraTranslationSpeed = 5.0f;
 	float m_CameraRotationSpeed = 180.0f;
 
 
