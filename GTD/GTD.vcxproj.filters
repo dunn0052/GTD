@@ -1395,6 +1395,9 @@
     <ClInclude Include="src\GTD\include\Rectangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\GTD\Physics\2DCollision.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\GTD\App.cpp">

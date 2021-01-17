@@ -11,7 +11,7 @@ void Layer2D::OnAttach()
 {
 	m_WindowSize = { 1280.f, 720.0f };
 	m_CameraController = GTD::OrthographicCameraController(m_WindowSize.x / m_WindowSize.y, m_DT, true);
-	m_Director = GTD::CreateRef<GTD::EntityDirector>();
+	m_Director = GTD::CreateRef<GTD::EntityDirector>(m_DT);
 	m_SpriteSheet = GTD::CreateRef<GTD::SpriteSheet>("../Game/spritesheets/autumn.png", glm::vec2{ 32.0f, 32.0f });
 	m_SpriteEntitySheet = GTD::CreateRef<GTD::SpriteSheet>("../Game/spritesheets/csBig.png", glm::vec2{ 60.0f, 80.0f });
 
@@ -213,22 +213,31 @@ void Layer2D::OnUpdate(const GTD::Ref<GTD::Timestep>& dt)
 	}
 	//m_Director->Update();
 
+	m_CollisionRect->SetVelocity({ 0.0f, 0.0f });
 	if (controller.m_CurrentButtons[GTD::ContextCode::UP])
 	{
-		m_CollisionRect->SetPosition(m_CollisionRect->Position() + glm::vec2({ 0.0f, 1.0f }) *m_DT->GetSecond());
+		m_CollisionRect->AddY(1.0f);
+		//m_CollisionRect->SetPosition(m_CollisionRect->Position() + glm::vec2({ 0.0f, 1.0f }) *m_DT->GetSecond());
 	}
 	if (controller.m_CurrentButtons[GTD::ContextCode::DOWN])
 	{
-		m_CollisionRect->SetPosition(m_CollisionRect->Position() + glm::vec2({ 0.0f, -1.0f }) * m_DT->GetSecond());
+		m_CollisionRect->AddY(-1.0f);
+		//m_CollisionRect->SetPosition(m_CollisionRect->Position() + glm::vec2({ 0.0f, -1.0f }) * m_DT->GetSecond());
 	}
 	if (controller.m_CurrentButtons[GTD::ContextCode::LEFT])
 	{
-		m_CollisionRect->SetPosition(m_CollisionRect->Position() + glm::vec2({ -1.0f, 0.0f }) * m_DT->GetSecond());
+		m_CollisionRect->AddX(-1.0f);
+		//m_CollisionRect->SetPosition(m_CollisionRect->Position() + glm::vec2({ -1.0f, 0.0f }) * m_DT->GetSecond());
 	}
 	if (controller.m_CurrentButtons[GTD::ContextCode::RIGHT])
 	{
-		m_CollisionRect->SetPosition(m_CollisionRect->Position() + glm::vec2({ 1.0f, 0.0f }) * m_DT->GetSecond());
+		m_CollisionRect->AddX(1.0f);
+		//m_CollisionRect->SetPosition(m_CollisionRect->Position() + glm::vec2({ 1.0f, 0.0f }) * m_DT->GetSecond());
+	
 	}
+
+	m_CollisionRect->SetPosition(m_CollisionRect->Position() + m_CollisionRect->Velocity() * m_DT->GetSecond());
+
 
 	glm::vec2 contactPoint = glm::vec2(0.0f);
 	glm::vec2 contactNormal = glm::vec2(0.0f);
@@ -238,8 +247,13 @@ void Layer2D::OnUpdate(const GTD::Ref<GTD::Timestep>& dt)
 
 	for (auto rect : m_RectCollisions)
 	{
-		if (m_CollisionRect->RectCollideRect(*rect))//(m_CollisionRect->DynamicRectCollideRect(*rect, contactPoint, contactNormal, time, timestep))
+		if (rect->DynamicRectCollideRect(*m_CollisionRect, contactPoint, contactNormal, time, timestep))
 		{
+			m_CollisionRect->SetVelocity(m_CollisionRect->Velocity() + contactNormal *
+				glm::vec2(std::abs(m_CollisionRect->Velocity().x), std::abs(m_CollisionRect->Velocity().y)) * (1 - time)); // calculate dot product instead
+
+			m_CollisionRect->SetPosition(m_CollisionRect->Position() + m_CollisionRect->Velocity() * m_DT->GetSecond()); // reverse the original movement
+
 			color = { 1.0f, 0.0f, 0.0f, 1.0f };
 		}
 		else
@@ -265,8 +279,8 @@ bool Layer2D::OnMouseDown(GTD::MouseButtonPressedEvent& e)
 
 bool Layer2D::OnMouseMove(GTD::MouseMovedEvent& e)
 {
-	m_CollisionRect->SetPosition({ (e.GetX() / m_WindowSize.x - 0.5f) * m_CameraController.GetZoomLevel() * m_WindowSize.x / m_WindowSize.y , (-e.GetY() / m_WindowSize.y + 5.5) * m_CameraController.GetZoomLevel() * m_WindowSize.x / m_WindowSize.y });
-	std::cout << "Mouse Screen Coords (" << (e.GetX() / m_WindowSize.x - 0.5f) * m_CameraController.GetZoomLevel() << ", " << (-e.GetY() / m_WindowSize.y + 5.5) * m_CameraController.GetZoomLevel() << ") " << std::endl;
+	//m_CollisionRect->SetPosition({ (e.GetX() / m_WindowSize.x - 0.5f) * m_CameraController.GetZoomLevel() * m_WindowSize.x / m_WindowSize.y , (-e.GetY() / m_WindowSize.y + 5.5) * m_CameraController.GetZoomLevel() * m_WindowSize.x / m_WindowSize.y });
+	//std::cout << "Mouse Screen Coords (" << (e.GetX() / m_WindowSize.x - 0.5f) * m_CameraController.GetZoomLevel() << ", " << (-e.GetY() / m_WindowSize.y + 5.5) * m_CameraController.GetZoomLevel() << ") " << std::endl;
 
 	if (m_CollisionRect->PointInRect({ e.GetX() / m_WindowSize.x, e.GetY() / m_WindowSize.y }))
 	{
