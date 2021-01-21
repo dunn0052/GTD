@@ -5,6 +5,7 @@
 #include "../Events/AppEvent.h"
 #include "../Events/MouseEvent.h"
 #include "../include/Controllers.h"
+#include "../Game/ECS/Entity.h"
 
 namespace GTD
 {
@@ -36,6 +37,8 @@ public:
 	GTD_API void SetCameraPosition(const glm::vec3& position) { m_Camera.SetPosition(position); }
 
 	GTD_API const float GetZoomLevel() const { return m_ZoomLevel; }
+
+	GTD_API void Follow(const Entity& ent);
 private:
 
 	bool OnMouseScrolled(MouseScrolledEvent& e);

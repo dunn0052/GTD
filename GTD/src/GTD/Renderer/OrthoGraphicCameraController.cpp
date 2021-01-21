@@ -93,6 +93,11 @@ namespace GTD
 		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FTN(OrthographicCameraController::OnWindowResize));
     }
 
+	GTD_API void OrthographicCameraController::Follow(const Entity& ent)
+	{
+		return;
+	}
+
 	bool OrthographicCameraController::OnMouseScrolled(MouseScrolledEvent& e)
     {
 		m_ZoomLevel -= e.GetYOffset() * 0.25f;

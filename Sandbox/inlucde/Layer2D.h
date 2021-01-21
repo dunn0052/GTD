@@ -31,6 +31,8 @@ private:
 	GTD::Ref<GTD::SpriteE> m_EntitySprite;
 	GTD::Ref<GTD::PC> m_PC;
 
+	GTD::Ref<GTD::Solid> m_Solid;
+
 	std::vector<GTD::Ref<GTD::Rect>> m_RectCollisions;
 	GTD::Ref<GTD::Rect> m_CollisionRect;
 	glm::vec2 m_WindowSize;

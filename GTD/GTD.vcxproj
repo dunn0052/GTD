@@ -510,6 +510,7 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../../PCH/PCH.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="src\GTD\Game\SpriteE.cpp" />
+    <ClCompile Include="src\GTD\Physics\2DCollision.cpp" />
     <ClCompile Include="src\GTD\Renderer\IFrameBuffer.cpp">
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>

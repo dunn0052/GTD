@@ -12,14 +12,14 @@ void Layer2D::OnAttach()
 	m_WindowSize = { 1280.f, 720.0f };
 	m_CameraController = GTD::OrthographicCameraController(m_WindowSize.x / m_WindowSize.y, m_DT, true);
 	m_Director = GTD::CreateRef<GTD::EntityDirector>(m_DT);
-	m_SpriteSheet = GTD::CreateRef<GTD::SpriteSheet>("../Game/spritesheets/autumn.png", glm::vec2{ 32.0f, 32.0f });
-	m_SpriteEntitySheet = GTD::CreateRef<GTD::SpriteSheet>("../Game/spritesheets/csBig.png", glm::vec2{ 60.0f, 80.0f });
+	m_SpriteSheet = GTD::CreateRef<GTD::SpriteSheet>("../GameData/spritesheets/autumn.png", glm::vec2{ 32.0f, 32.0f });
+	m_SpriteEntitySheet = GTD::CreateRef<GTD::SpriteSheet>("../GameData/spritesheets/csBig.png", glm::vec2{ 60.0f, 80.0f });
 
 	GTD::TileMapProps tileMapProps = {};
 	tileMapProps.Position = { -6.0f, 0.0f, 0.001f };
 	tileMapProps.SpriteSheet = m_SpriteSheet;
 	tileMapProps.Tint = glm::vec4(1.0f);
-	tileMapProps.TileMapCSVPath = "../Game/levelData/TEST_AUTUMN_Tile Layer 1.csv";
+	tileMapProps.TileMapCSVPath = "../GameData/levelData/TEST_AUTUMN_Tile Layer 1.csv";
 	tileMapProps.DT = m_DT;
 
 
@@ -28,9 +28,8 @@ void Layer2D::OnAttach()
 	GTD::PCProps pcParms =
 	{
 		m_SpriteEntitySheet,
-		GTD::CreateRef<GTD::Quad>(GTD::Rectangle({0.0f, 0.0f, 0.002f})),
+		GTD::CreateRef<GTD::Quad>(GTD::Rectangle({0.0f, 0.0f, 0.002f}, {0.5f, 0.5f})),
 		true,
-		nullptr,
 		m_DT,
 		0,
 		m_Controllers.GetXboxControllerP(0),
@@ -45,18 +44,20 @@ void Layer2D::OnAttach()
 	tileLayerProps.Quad = GTD::CreateRef<GTD::Quad>(GTD::Rectangle({ -6.0f, 0.0f, 0.003f }), m_Color);
 	tileLayerProps.Solid = true;
 	tileLayerProps.SpriteSheet = m_SpriteSheet;
-	tileLayerProps.TileMapCSVPath = "../Game/levelData/TEST_AUTUMN_Tile Layer 2.csv";
+	tileLayerProps.TileMapCSVPath = "../GameData/levelData/TEST_AUTUMN_Tile Layer 2.csv";
 
 	
 	tileMapProps.Position = { -6.0f, 0.0f, 0.1f };
-	tileMapProps.TileMapCSVPath = "../Game/levelData/TEST_AUTUMN_Tile Layer 2.csv";
+	tileMapProps.TileMapCSVPath = "../GameData/levelData/TEST_AUTUMN_Tile Layer 3.csv";
 	tileMapProps.Tint = m_Color;
 
-	//m_EMaps.push_back(m_Director->Create(tileMapProps));
 
+	tileLayerProps.TileMapCSVPath = "../GameData/levelData/TEST_AUTUMN_Tile Layer 2.csv";
 
 	m_TileLayer = m_Director->Create(tileLayerProps);
-	 
+	
+	m_EMaps.push_back(m_Director->Create(tileMapProps));
+
 	m_PC->SetAction
 	(
 		GTD::ContextCode::UP,
@@ -183,9 +184,18 @@ void Layer2D::OnAttach()
 	
 	m_CameraController.SetCameraPosition({ 0.0f, 5.0f, 0.0f });
 
-	m_RectCollisions.push_back(GTD::CreateRef<GTD::Rect>(glm::vec2({ 0.0f, 5.0f }), glm::vec2({ 1.0f, 1.0f })));
+	GTD::SpriteParamsE spriteParms = {};
+
+	spriteParms.DT = m_DT;
+	spriteParms.IsSolid = true;
+	spriteParms.Quad = GTD::CreateRef<GTD::Quad>(GTD::Rectangle({ -10.0f, 0.0f, 0.003f }), m_Color);
+	spriteParms.StartingFrame = 3;
+	spriteParms.SpriteSheet = m_SpriteEntitySheet;
+
+	m_EntitySprite = m_Director->Create(spriteParms);
+	//m_RectCollisions.push_back(GTD::CreateRef<GTD::Rect>(glm::vec2({ 0.0f, 5.0f }), glm::vec2({ 1.0f, 1.0f })));
 	//m_RectCollisions.push_back(GTD::CreateRef<GTD::Rect>(glm::vec2(0.0f), glm::vec2({2.0f, 5.0f})));
-	m_CollisionRect = GTD::CreateRef<GTD::Rect>(glm::vec2({ 0.0f, 0.0f}), glm::vec2({ 1.0f, 1.0f }));
+	//m_CollisionRect = GTD::CreateRef<GTD::Rect>(glm::vec2({ 0.0f, 0.0f}), glm::vec2({ 1.0f, 1.0f }));
 }
 
 void Layer2D::OnUpdate(const GTD::Ref<GTD::Timestep>& dt)
@@ -211,8 +221,8 @@ void Layer2D::OnUpdate(const GTD::Ref<GTD::Timestep>& dt)
 		m_Color = m_Color - glm::vec4{ 0.0f, 0.01f, -0.001f, 0.1f };
 		m_TileLayer->SetTint(m_Color);
 	}
-	//m_Director->Update();
-
+	m_Director->Update();
+	/*
 	m_CollisionRect->SetVelocity({ 0.0f, 0.0f });
 	if (controller.m_CurrentButtons[GTD::ContextCode::UP])
 	{
@@ -264,7 +274,7 @@ void Layer2D::OnUpdate(const GTD::Ref<GTD::Timestep>& dt)
 	}
 
 	GTD::Renderer2D::Draw(m_CollisionRect, m_Color);
-
+	*/
 	GTD::Renderer2D::EndScene();
 }
 
@@ -282,6 +292,7 @@ bool Layer2D::OnMouseMove(GTD::MouseMovedEvent& e)
 	//m_CollisionRect->SetPosition({ (e.GetX() / m_WindowSize.x - 0.5f) * m_CameraController.GetZoomLevel() * m_WindowSize.x / m_WindowSize.y , (-e.GetY() / m_WindowSize.y + 5.5) * m_CameraController.GetZoomLevel() * m_WindowSize.x / m_WindowSize.y });
 	//std::cout << "Mouse Screen Coords (" << (e.GetX() / m_WindowSize.x - 0.5f) * m_CameraController.GetZoomLevel() << ", " << (-e.GetY() / m_WindowSize.y + 5.5) * m_CameraController.GetZoomLevel() << ") " << std::endl;
 
+	/*
 	if (m_CollisionRect->PointInRect({ e.GetX() / m_WindowSize.x, e.GetY() / m_WindowSize.y }))
 	{
 		m_Color = { 1.0f, 0.0f, 0.0f, 1.0f };
@@ -290,6 +301,7 @@ bool Layer2D::OnMouseMove(GTD::MouseMovedEvent& e)
 	{
 		m_Color = { 0.0f, 1.0f, 0.0f, 1.0f };
 	}
+	*/
 	return false;
 }
 
