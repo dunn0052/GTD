@@ -89,6 +89,11 @@ namespace GTD
 		((Controllable*)m_ComponentCallbacks[COMPONENTS::CONTROLLABLE]())->SetAction(button, action, m_ControlParams);
 	}
 
+	Ref<Quad> PC::GetQuad() const
+	{
+		return m_Quad;
+	}
+
 	void PC::Init()
 	{
 		for (uint32_t type = 0; type < COMPONENTS::MAX_COMPONENTS; type++)

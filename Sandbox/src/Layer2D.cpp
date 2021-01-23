@@ -196,13 +196,14 @@ void Layer2D::OnAttach()
 	//m_RectCollisions.push_back(GTD::CreateRef<GTD::Rect>(glm::vec2({ 0.0f, 5.0f }), glm::vec2({ 1.0f, 1.0f })));
 	//m_RectCollisions.push_back(GTD::CreateRef<GTD::Rect>(glm::vec2(0.0f), glm::vec2({2.0f, 5.0f})));
 	//m_CollisionRect = GTD::CreateRef<GTD::Rect>(glm::vec2({ 0.0f, 0.0f}), glm::vec2({ 1.0f, 1.0f }));
+	m_CameraController.Follow(m_PC);
 }
 
 void Layer2D::OnUpdate(const GTD::Ref<GTD::Timestep>& dt)
 {
 
 	m_Controllers.OnUpdate();
-	m_CameraController.OnUpdate(m_Controllers);
+	//m_CameraController.OnUpdate(m_Controllers);
 
 	GTD::XboxController controller = m_Controllers.GetXboxController(0);
 
@@ -275,6 +276,9 @@ void Layer2D::OnUpdate(const GTD::Ref<GTD::Timestep>& dt)
 
 	GTD::Renderer2D::Draw(m_CollisionRect, m_Color);
 	*/
+
+	m_CameraController.OnUpdate();
+
 	GTD::Renderer2D::EndScene();
 }
 

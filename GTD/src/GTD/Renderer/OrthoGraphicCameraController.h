@@ -5,7 +5,7 @@
 #include "../Events/AppEvent.h"
 #include "../Events/MouseEvent.h"
 #include "../include/Controllers.h"
-#include "../Game/ECS/Entity.h"
+#include "../Game/PC.h"
 
 namespace GTD
 {
@@ -38,7 +38,8 @@ public:
 
 	GTD_API const float GetZoomLevel() const { return m_ZoomLevel; }
 
-	GTD_API void Follow(const Entity& ent);
+	GTD_API void Follow(const Ref<PC>& ent);
+
 private:
 
 	bool OnMouseScrolled(MouseScrolledEvent& e);
@@ -61,6 +62,10 @@ private:
 	float m_CameraTranslationSpeed = 5.0f;
 	float m_CameraRotationSpeed = 180.0f;
 
+	Ref<PC> m_Following;
+
+	float m_PanSpeed = 10.0f;
+	float m_PanAcceleration = 2.0f;
 
 	};
 }

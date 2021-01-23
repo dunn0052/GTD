@@ -84,6 +84,8 @@ namespace GTD
 	void OrthographicCameraController::OnUpdate()
 	{
 		// Get keys here
+		m_Camera.SetPosition(m_Following->GetQuad()->m_Rect.Center());
+
 	}
 
     void OrthographicCameraController::OnEvent(Event& e)
@@ -93,9 +95,9 @@ namespace GTD
 		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FTN(OrthographicCameraController::OnWindowResize));
     }
 
-	GTD_API void OrthographicCameraController::Follow(const Entity& ent)
+	void OrthographicCameraController::Follow(const Ref<PC>& ent)
 	{
-		return;
+		m_Following = ent;
 	}
 
 	bool OrthographicCameraController::OnMouseScrolled(MouseScrolledEvent& e)

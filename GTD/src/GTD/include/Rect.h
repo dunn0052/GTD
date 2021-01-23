@@ -12,6 +12,7 @@ namespace GTD
 		GTD_API const float Bottom() const { return m_Position.y; };
 		GTD_API const float Right() const { return m_Position.x + m_Size.x; };
 		GTD_API const float Left() const { return m_Position.x; };
+		GTD_API const glm::vec3 Center() const { return {m_Position.x + m_Size.x / 2, m_Position.y + m_Size.y / 2, m_Position.z}; }
 		GTD_API const glm::vec2 Position() const { return { m_Position.x, m_Position.y }; };
 		GTD_API const glm::vec2 Size() const { return m_Size; };
 		glm::vec3 m_Position;
