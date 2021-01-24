@@ -1044,13 +1044,7 @@
     <ClInclude Include="src\GTD\Game\SpriteSheet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GTD\Game\Sprite.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\GTD\Util\CSVLoader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GTD\Game\TileMap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GTD\Game\TIle.h">
@@ -1493,13 +1487,7 @@
     <ClCompile Include="src\GTD\Game\SpriteSheet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GTD\Game\Sprite.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\GTD\Util\CSVLoader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GTD\Game\TileMap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GTD\Renderer\OpenGLFrameBuffer.cpp">

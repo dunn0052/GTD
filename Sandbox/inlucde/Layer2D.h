@@ -26,7 +26,6 @@ private:
 	GTD::Ref<GTD::SpriteSheet> m_SpriteEntitySheet;
 	std::vector<GTD::Ref<GTD::TileMapE>> m_EMaps;
 	GTD::Ref<GTD::TileLayer> m_TileLayer;
-	GTD::Ref<GTD::Sprite> m_Sprite;
 	GTD::Ref<GTD::EntityDirector> m_Director;
 	GTD::Ref<GTD::SpriteE> m_EntitySprite;
 	GTD::Ref<GTD::PC> m_PC;

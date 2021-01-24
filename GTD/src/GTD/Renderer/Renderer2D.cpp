@@ -194,22 +194,9 @@ namespace GTD
 		DrawQuad(quad->m_Rect.m_Position, quad->m_Rect.m_Size, quad->m_Color);
 	}
 
-	void Renderer2D::DrawQuad(const Ref<Sprite>& sprite)
-	{
-		DrawQuad(sprite->GetQuad()->m_Rect.m_Position, sprite->GetQuad()->m_Rect.m_Size, sprite->GetImage()->GetSpriteSheet(), sprite->GetQuad()->m_Color, sprite->GetImage()->GetTextureCoordinates());
-	}
-
 	void Renderer2D::DrawQuad(const Tile& tile, const Ref<SpriteSheet> spriteSheet)
 	{
 		DrawQuad(tile.m_Quad.m_Rect.m_Position, tile.m_Quad.m_Rect.m_Size, spriteSheet->GetSpriteSheet(), tile.m_Quad.m_Color, spriteSheet->GetTile(tile.m_PositionID)->GetTextureCoordinates());
-	}
-
-	void Renderer2D::DrawQuad(const Ref<TileMap>& tileMap)
-	{
-		for (auto& tile : tileMap->GetTiles())
-		{
-			DrawQuad(tile, tileMap->GetSpriteSheet());
-		}
 	}
 
 	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, const Ref<ITexture2D>& texture)

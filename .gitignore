@@ -2,8 +2,14 @@
 .vs/
 bin/
 bin-int/
-Game/
+GameData/
+images/
+home/
 
 # Files
 *.user
 go_shortcuts.txt
+*.png
+*.csv
+*.pub
+
