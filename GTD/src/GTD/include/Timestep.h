@@ -20,6 +20,37 @@ namespace GTD
 
 		float GetTime() { return 0.0f; } // glfwGetTime() instead of 0.0f, but should be platform independent
 
+		// Operators
+		friend bool operator<(const Timestep& l, const Timestep& r)
+		{
+			return l.m_Time < r.m_Time;
+		}	
+	
+		friend bool operator>(const Timestep& l, const Timestep& r)
+		{
+			return l.m_Time > r.m_Time;
+		}
+	
+		friend bool operator<=(const Timestep& l, const Timestep& r)
+		{
+			return l.m_Time <= r.m_Time;
+		}
+	
+		friend bool operator>=(const Timestep& l, const Timestep& r)
+		{
+			return l.m_Time >= r.m_Time;
+		}
+
+		friend bool operator==(const Timestep& l, const Timestep& r)
+		{
+			return l.m_Time == r.m_Time;
+		}
+
+		friend void operator+=(Timestep& l, Timestep& r)
+		{
+			l.m_Time += r.m_Time;
+		}
+
 	private:
 		float m_Time;
 	};

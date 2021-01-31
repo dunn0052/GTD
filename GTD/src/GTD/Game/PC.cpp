@@ -89,6 +89,16 @@ namespace GTD
 		((Controllable*)m_ComponentCallbacks[COMPONENTS::CONTROLLABLE]())->SetAction(button, action, m_ControlParams);
 	}
 
+	void PC::SetFrameRange(const std::string& key, const int32_t& beginningFrame, const int32_t& endingFrame)
+	{
+		((Animated*)m_ComponentCallbacks[COMPONENTS::ANIMATED]())->AddFrameRange(key, beginningFrame, endingFrame);
+	}
+
+	void PC::TryChangeFrameRange(const std::string& key)
+	{
+		((Animated*)m_ComponentCallbacks[COMPONENTS::ANIMATED]())->TryChangeFrameRange(key);
+	}
+
 	Ref<Quad> PC::GetQuad() const
 	{
 		return m_Quad;

@@ -39,3 +39,5 @@
 #include "GTD/Game/ECS/Drawable.h"
 
 #include "GTD/Physics/2DCollision.h"
+
+#include "GTD/include/EntryPoint.h"
