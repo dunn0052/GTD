@@ -210,7 +210,7 @@ namespace GTD
 	{
 		Ref<PC> pc = CreateRef<PC>(pcProps);
 
-		m_Animated.push_back(Animated(pcProps.SpriteSheet, pcProps.Quad, pcProps.StartingFrame, pcProps.DT, 0.2f));
+		m_Animated.push_back(Animated(pcProps.SpriteSheet, pcProps.Quad, pcProps.StartingFrame, pcProps.DT, 0.1f));
 		SetComponentCallBack(pc, COMPONENTS::ANIMATED);
 
 		m_Controllables.push_back(Controllable(pcProps.Controller));

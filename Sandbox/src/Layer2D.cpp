@@ -33,9 +33,11 @@ void Layer2D::OnAttach()
 		m_DT,
 		0,
 		m_Controllers.GetXboxControllerP(0),
-		5.0f,
+		2.0f,
 		glm::vec3{0.0f, 0.0f, 0.0f}
 	};
+
+	GTD::PCProps pc;
 
 	m_PC = m_Director->Create(pcParms);
 
@@ -58,10 +60,10 @@ void Layer2D::OnAttach()
 	
 	m_EMaps.push_back(m_Director->Create(tileMapProps));
 
-	m_PC->SetFrameRange("DOWN", 0, 2);
-	m_PC->SetFrameRange("LEFT", 3, 5);
-	m_PC->SetFrameRange("RIGHT", 6, 8);
-	m_PC->SetFrameRange("UP", 9, 11);
+	m_PC->SetFrameRange("DOWN", 0, 3);
+	m_PC->SetFrameRange("LEFT", 3, 6);
+	m_PC->SetFrameRange("RIGHT", 6, 9);
+	m_PC->SetFrameRange("UP", 9, 12);
 
 	m_PC->SetFrameRange("DOWN_NEUTRAL", 0, 0);
 	m_PC->SetFrameRange("LEFT_NEUTRAL", 3, 3);

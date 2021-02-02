@@ -78,7 +78,7 @@ namespace GTD
 	void Animated::AddFrameRange(const std::string& key, const int32_t& beginningFrame, const int32_t& endingFrame)
 	{
 		GTD_ASSERT(endingFrame >= beginningFrame || endingFrame > m_SpriteSheet->GetNumTiles() || beginningFrame < 0, "Invalid frame range!");
-		m_FrameRanges[key] = CreateRef<FrameRange>(beginningFrame, endingFrame);
+		m_FrameRanges[key] = CreateRef<FrameRange>(beginningFrame, endingFrame - beginningFrame);
 	}
 
 	bool Animated::TryChangeFrameRange(const std::string& key)
@@ -86,7 +86,7 @@ namespace GTD
 		if (m_FrameRanges.find(key) != m_FrameRanges.end())
 		{
 			m_AnimationSequenceKey = key;
-			if (std::get<0>(*m_FrameRanges[m_AnimationSequenceKey]) != std::get<1>(*m_FrameRanges[m_AnimationSequenceKey]))
+			if (0 != std::get<1>(*m_FrameRanges[m_AnimationSequenceKey]))
 			{
 				UpdateFrame = &Animated::MultiFrameUpdate; // if we changed to a state that has more than 1 state then we need to calculate when to change frames
 			}
