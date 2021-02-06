@@ -26,6 +26,7 @@
     <ClInclude Include="src\GTD\Game\ECS\IComponent.h" />
     <ClInclude Include="src\GTD\Game\SpriteE.h" />
     <ClInclude Include="src\GTD\Game\TIle.h" />
+    <ClInclude Include="src\GTD\Util\EventCallbackHandler.h" />
     <ClInclude Include="src\GTD\include\Rectangle.h" />
     <ClInclude Include="src\GTD\Physics\2DCollision.h" />
     <ClInclude Include="src\GTD\Renderer\IFrameBuffer.h" />
@@ -77,6 +78,7 @@
     <ClInclude Include="src\GTD\Renderer\IRendererAPI.h" />
     <ClInclude Include="src\GTD\Renderer\RenderCommands.h" />
     <ClInclude Include="src\GTD\Renderer\ITexture.h" />
+    <ClInclude Include="src\GTD\Util\Interface.h" />
     <ClInclude Include="src\GTD\Util\JoypadCodes.h" />
     <ClInclude Include="src\GTD\Util\KeyCodes.h" />
     <ClInclude Include="src\GTD\Util\MouseCodes.h" />

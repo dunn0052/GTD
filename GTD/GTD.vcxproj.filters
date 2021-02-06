@@ -1392,6 +1392,12 @@
     <ClInclude Include="src\GTD\Physics\2DCollision.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\GTD\Util\EventCallbackHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GTD\Util\Interface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\GTD\App.cpp">
