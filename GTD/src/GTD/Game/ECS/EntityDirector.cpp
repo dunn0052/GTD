@@ -6,6 +6,7 @@ namespace GTD
 	EntityDirector::EntityDirector(const Ref<Timestep>& dt) :
 		m_DT(dt), m_Drawables(), m_Animated(), m_Controllables(), m_Solid()
 	{
+		m_Components.resize(COMPONENTS::MAX_COMPONENTS);
 	}
 
 	EntityDirector::~EntityDirector()
@@ -21,6 +22,14 @@ namespace GTD
 		* Check for collisions and adjust
 		* Draw images in their final locations
 		*/
+
+		for (auto& componentType : m_Components)
+		{
+			for (auto& component : componentType)
+			{
+				component->Update();
+			}
+		}
 
 		for (Controllable& component : m_Controllables)
 		{
