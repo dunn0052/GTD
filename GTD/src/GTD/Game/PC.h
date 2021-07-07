@@ -63,7 +63,10 @@ namespace GTD
 		GTD_API void PreviousFrame();
 		GTD_API void AddAction(const ContextAxis& axis, const AxisActionCallback& action);
 		GTD_API void SetAction(const ContextCode& button, const ButtonActionCallback& action);
+		GTD_API void SetFrameRange(const std::string& key, const int32_t& beginningFrame, const int32_t& endingFrame);
+		GTD_API void TryChangeFrameRange(const std::string& key);
 
+		// Unified
 		GTD_API Ref<Quad> GetQuad() const;
 
 	private:

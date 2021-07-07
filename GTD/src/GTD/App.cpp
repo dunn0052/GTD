@@ -10,7 +10,7 @@ namespace GTD
 
 		m_Window = WindowsWindow::Create();
 		m_Window->SetEventCallback(BIND_EVENT_FTN(App::OnEvent));
-		m_DT = CreateRef<Timestep>();
+		m_DT = CreateRef<Timestep>(0.0f);
 
 		Renderer::Init();
 	}

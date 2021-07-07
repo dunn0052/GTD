@@ -3,9 +3,7 @@
 #include "ITexture.h"
 #include "../include/Rect.h"
 #include "../include/Rectangle.h"
-#include "../Game/Sprite.h"
 #include "../Game/TIle.h"
-#include "../Game/TIleMap.h"
 #include "../Game/ECS/Animated.h"
 
 namespace GTD
@@ -29,9 +27,7 @@ namespace GTD
 		GTD_API static void DrawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color);
 
 		GTD_API static void DrawQuad(const Ref<Quad>& quad);
-		GTD_API static void DrawQuad(const Ref<Sprite>& sprite);
 		GTD_API static void DrawQuad(const Tile& tile, const Ref<SpriteSheet> spriteSheet);
-		GTD_API static void DrawQuad(const Ref<TileMap>& tileMap);
 
 		GTD_API static void DrawQuad(const glm::vec2& position, const glm::vec2& size, const Ref<ITexture2D>& texture);
 		GTD_API static void DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<ITexture2D>& texture);

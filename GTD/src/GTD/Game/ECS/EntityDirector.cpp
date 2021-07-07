@@ -6,6 +6,7 @@ namespace GTD
 	EntityDirector::EntityDirector(const Ref<Timestep>& dt) :
 		m_DT(dt), m_Drawables(), m_Animated(), m_Controllables(), m_Solid()
 	{
+		m_Components.resize(COMPONENTS::MAX_COMPONENTS);
 	}
 
 	EntityDirector::~EntityDirector()
@@ -22,29 +23,37 @@ namespace GTD
 		* Draw images in their final locations
 		*/
 
-		for (Controllable component : m_Controllables)
+		for (auto& componentType : m_Components)
+		{
+			for (auto& component : componentType)
+			{
+				component->Update();
+			}
+		}
+
+		for (Controllable& component : m_Controllables)
 		{
 			component.Update();
 		}
 
-		for (Movable component : m_Movables)
+		for (Movable& component : m_Movables)
 		{
 			component.Update();
 		}
 
-		for (Solid component : m_Solid)
+		for (Solid& component : m_Solid)
 		{
 			component.Update();
 		}
 
 		CalculateCollisions();
 
-		for (Drawable component : m_Drawables)
+		for (Drawable& component : m_Drawables)
 		{
 			component.Update();
 		}
 
-		for (Animated component : m_Animated)
+		for (Animated& component : m_Animated)
 		{
 			component.Update();
 		}
@@ -194,7 +203,7 @@ namespace GTD
 	{
 		Ref<SpriteE> sprite = CreateRef<SpriteE>();
 
-		m_Animated.push_back(Animated(spriteProps.SpriteSheet, spriteProps.Quad, spriteProps.StartingFrame, spriteProps.DT));
+		m_Animated.push_back(Animated(spriteProps.SpriteSheet, spriteProps.Quad, spriteProps.StartingFrame, spriteProps.DT, 0.1f));
 		SetComponentCallBack(sprite, COMPONENTS::ANIMATED);
 		
 		if (spriteProps.IsSolid)
@@ -210,7 +219,7 @@ namespace GTD
 	{
 		Ref<PC> pc = CreateRef<PC>(pcProps);
 
-		m_Animated.push_back(Animated(pcProps.SpriteSheet, pcProps.Quad, pcProps.StartingFrame, pcProps.DT));
+		m_Animated.push_back(Animated(pcProps.SpriteSheet, pcProps.Quad, pcProps.StartingFrame, pcProps.DT, 0.1f));
 		SetComponentCallBack(pc, COMPONENTS::ANIMATED);
 
 		m_Controllables.push_back(Controllable(pcProps.Controller));
@@ -247,7 +256,8 @@ namespace GTD
 								),
 
 							tileIndex,
-							spriteSheetProps.DT
+							spriteSheetProps.DT,
+							0.01f
 						)
 					);
 
@@ -286,7 +296,8 @@ namespace GTD
 							tileLayerProps.SpriteSheet,
 							params.Quad,
 							tileIndex,
-							tileLayerProps.DT
+							tileLayerProps.DT,
+							0.1f
 						)
 					);
 

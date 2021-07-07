@@ -23,19 +23,13 @@
 #include "GTD/Renderer/RenderCommands.h"
 #include "GTD/Renderer/Renderer.h"
 #include "GTD/Renderer/Renderer2D.h"
-#include "GTD/Renderer/IVertexArray.h"
-#include "GTD/Renderer/IShader.h"
-#include "GTD/Renderer/ShaderLibrary.h"
 #include "GTD/Renderer/ITexture.h"
 #include "GTD/Renderer/OrthographicCamera.h"
 #include "GTD/Renderer/OrthographicCameraController.h"
-#include "GTD/Renderer/IFrameBuffer.h"
 
 #include "GTD/Game/SpriteSheet.h"
-#include "GTD/Game/Sprite.h"
 #include "GTD/Game/SpriteE.h"
 #include "GTD/Game/PC.h"
-#include "GTD/Game/TileMap.h"
 #include "GTD/Game/TileMapE.h"
 #include "GTD/Game/TIle.h"
 
@@ -45,3 +39,5 @@
 #include "GTD/Game/ECS/Drawable.h"
 
 #include "GTD/Physics/2DCollision.h"
+
+#include "GTD/include/EntryPoint.h"

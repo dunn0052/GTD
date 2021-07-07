@@ -26,12 +26,12 @@
     <ClInclude Include="src\GTD\Game\ECS\IComponent.h" />
     <ClInclude Include="src\GTD\Game\SpriteE.h" />
     <ClInclude Include="src\GTD\Game\TIle.h" />
+    <ClInclude Include="src\GTD\Util\EventCallbackHandler.h" />
     <ClInclude Include="src\GTD\include\Rectangle.h" />
     <ClInclude Include="src\GTD\Physics\2DCollision.h" />
     <ClInclude Include="src\GTD\Renderer\IFrameBuffer.h" />
     <ClInclude Include="src\GTD\Renderer\OpenGLFrameBuffer.h" />
     <ClInclude Include="src\GTD\Util\CSVLoader.h" />
-    <ClInclude Include="src\GTD\Game\Sprite.h" />
     <ClInclude Include="src\GTD\Game\SpriteSheet.h" />
     <ClInclude Include="src\GTD\include\Input.h" />
     <ClInclude Include="src\GTD\include\Rect.h" />
@@ -78,6 +78,7 @@
     <ClInclude Include="src\GTD\Renderer\IRendererAPI.h" />
     <ClInclude Include="src\GTD\Renderer\RenderCommands.h" />
     <ClInclude Include="src\GTD\Renderer\ITexture.h" />
+    <ClInclude Include="src\GTD\Util\Interface.h" />
     <ClInclude Include="src\GTD\Util\JoypadCodes.h" />
     <ClInclude Include="src\GTD\Util\KeyCodes.h" />
     <ClInclude Include="src\GTD\Util\MouseCodes.h" />
@@ -85,7 +86,6 @@
     <ClInclude Include="src\GTD\PCH\PCH.h" />
     <ClInclude Include="src\TPP\GLFW\glfw3.h" />
     <ClInclude Include="src\TPP\GLFW\glfw3native.h" />
-    <ClInclude Include="src\GTD\Game\TileMap.h" />
     <ClInclude Include="Vendor\freetype\include\freetype\config\ftconfig.h" />
     <ClInclude Include="Vendor\freetype\include\freetype\config\ftheader.h" />
     <ClInclude Include="Vendor\freetype\include\freetype\config\ftmodule.h" />
@@ -523,10 +523,6 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="src\GTD\Game\Sprite.cpp">
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
-    </ClCompile>
     <ClCompile Include="src\GTD\Game\SpriteSheet.cpp">
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
@@ -638,10 +634,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeaderFile>
-    </ClCompile>
-    <ClCompile Include="src\GTD\Game\TileMap.cpp">
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../PCH/PCH.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="Vendor\GLAD\src\glad.c">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>

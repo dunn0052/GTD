@@ -7,11 +7,14 @@
 
 namespace GTD
 {
+	using FrameRange = std::tuple<int32_t, int32_t>;
+	
 	class Animated : public IComponent
 	{
+
 	public:
 
-		GTD_API Animated(const Ref<SpriteSheet>& spriteSheet, const Ref<Quad>& quad, const int32_t& startingFrame, const Ref<Timestep>& dt);
+		GTD_API Animated(const Ref<SpriteSheet>& spriteSheet, const Ref<Quad>& quad, const int32_t& startingFrame, const Ref<Timestep>& dt, const float& frameTime);
 		GTD_API Animated(const Ref<Quad>& quad, const int32_t& startingFrame, float spriteSheetIndex);
 		GTD_API virtual ~Animated();
 		GTD_API virtual void Init() override;
@@ -20,6 +23,8 @@ namespace GTD
 		GTD_API virtual COMPONENTS GetType() const override { return COMPONENTS::ANIMATED; };
 
 		GTD_API void SetFrame(const int32_t& frameNum);
+		GTD_API void AddFrameRange(const std::string& key, const int32_t& beginningFrame, const int32_t& endingFrame);
+		GTD_API bool TryChangeFrameRange(const std::string& key);
 		GTD_API void NextFrame();
 		GTD_API void PreviousFrame();
 
@@ -32,6 +37,9 @@ namespace GTD
 
 	private:
 		void Frame();
+		void MultiFrameUpdate();
+		void SingleFrameUpdate();
+		void (Animated::*UpdateFrame)(); // frame change service interrupt
 
 	private:
 		Ref<SpriteSheet> m_SpriteSheet;
@@ -41,5 +49,9 @@ namespace GTD
 		Ref<SubTexture> m_CurrentImage;
 		bool m_Activated;
 		Ref<Timestep> m_DT;
+		Timestep m_FrameUpdateTime;
+		Timestep m_FrameChangeTimer;
+		std::unordered_map<std::string, Ref<FrameRange>> m_FrameRanges;
+		std::string m_AnimationSequenceKey;
 	};
 }

@@ -33,9 +33,11 @@ void Layer2D::OnAttach()
 		m_DT,
 		0,
 		m_Controllers.GetXboxControllerP(0),
-		5.0f,
+		2.0f,
 		glm::vec3{0.0f, 0.0f, 0.0f}
 	};
+
+	GTD::PCProps pc;
 
 	m_PC = m_Director->Create(pcParms);
 
@@ -58,6 +60,16 @@ void Layer2D::OnAttach()
 	
 	m_EMaps.push_back(m_Director->Create(tileMapProps));
 
+	m_PC->SetFrameRange("DOWN", 0, 3);
+	m_PC->SetFrameRange("LEFT", 3, 6);
+	m_PC->SetFrameRange("RIGHT", 6, 9);
+	m_PC->SetFrameRange("UP", 9, 12);
+
+	m_PC->SetFrameRange("DOWN_NEUTRAL", 0, 0);
+	m_PC->SetFrameRange("LEFT_NEUTRAL", 3, 3);
+	m_PC->SetFrameRange("RIGHT_NEUTRAL", 6, 6);
+	m_PC->SetFrameRange("UP_NEUTRAL", 9, 9);
+
 	m_PC->SetAction
 	(
 		GTD::ContextCode::UP,
@@ -76,12 +88,14 @@ void Layer2D::OnAttach()
 			{
 				//std::cout << "BUTTON STATUS PRESSED: " << buttonStatus << std::endl;
 				ent->ChangYDirection(1.0f);
+				ent->TryChangeFrameRange("UP");
 				return;
 			}
 			case GTD::BUTTON_RELEASED:
 			{
 				//std::cout << "BUTTON STATUS RELEASED: " << buttonStatus << std::endl;
 				ent->ChangYDirection(0.0f);
+				ent->TryChangeFrameRange("UP_NEUTRAL");
 				return;
 			}
 			}
@@ -107,12 +121,14 @@ void Layer2D::OnAttach()
 			{
 				//std::cout << "BUTTON STATUS PRESSED: " << buttonStatus << std::endl;
 				ent->ChangYDirection(-1.0f);
+				ent->TryChangeFrameRange("DOWN");
 				return;
 			}
 			case GTD::BUTTON_RELEASED:
 			{
 				//std::cout << "BUTTON STATUS RELEASED: " << buttonStatus << std::endl;
 				ent->ChangYDirection(0.0f);
+				ent->TryChangeFrameRange("DOWN_NEUTRAL");
 				return;
 			}
 			}
@@ -138,12 +154,14 @@ void Layer2D::OnAttach()
 			{
 				//std::cout << "BUTTON STATUS PRESSED: " << buttonStatus << std::endl;
 				ent->ChangXDirection(-1.0f);
+				ent->TryChangeFrameRange("LEFT");
 				return;
 			}
 			case GTD::BUTTON_RELEASED:
 			{
 				//std::cout << "BUTTON STATUS RELEASED: " << buttonStatus << std::endl;
 				ent->ChangXDirection(0.0f);
+				ent->TryChangeFrameRange("LEFT_NEUTRAL");
 				return;
 			}
 			}
@@ -169,12 +187,14 @@ void Layer2D::OnAttach()
 			{
 				//std::cout << "BUTTON STATUS PRESSED: " << buttonStatus << std::endl;
 				ent->ChangXDirection(1.0f);
+				ent->TryChangeFrameRange("RIGHT");
 				return;
 			}
 			case GTD::BUTTON_RELEASED:
 			{
 				//std::cout << "BUTTON STATUS RELEASED: " << buttonStatus << std::endl;
 				ent->ChangXDirection(0.0f);
+				ent->TryChangeFrameRange("RIGHT_NEUTRAL");
 				return;
 			}
 			}

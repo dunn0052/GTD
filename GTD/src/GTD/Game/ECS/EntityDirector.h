@@ -13,6 +13,8 @@
 #include "../../include/Timestep.h"
 #include "../../Physics/2DCollision.h"
 
+#include "../../Util/Interface.h"
+
 namespace GTD
 {
 	class EntityDirector
@@ -42,5 +44,10 @@ namespace GTD
 		std::vector<Controllable> m_Controllables;
 		std::vector<Solid> m_Solid;
 		std::vector<Movable> m_Movables;
+
+		using Component = Implementation<IComponent>;
+
+		std::vector<std::vector<Component>> m_Components;
+
 	};
 }
