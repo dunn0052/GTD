@@ -48,7 +48,5 @@ namespace GTD
 
 	// To be defined in client
 	App* CreateApp();
-
-
 }
 

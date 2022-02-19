@@ -21,7 +21,7 @@ namespace GTD
 		}
 		void Clear()
 		{
-			m_Delegates.empty
+			m_Delegates.clear();
 		}
 
 		void operator +=(DelegateType&& inDel)
